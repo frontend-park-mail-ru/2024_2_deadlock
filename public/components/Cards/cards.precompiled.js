@@ -29,7 +29,7 @@
             fn: container.program(2, data, 0),
             inverse: container.noop,
             data: data,
-            loc: { start: { line: 4, column: 4 }, end: { line: 6, column: 11 } },
+            loc: { start: { line: 4, column: 4 }, end: { line: 8, column: 11 } },
           },
         )) != null
           ? stack1
@@ -47,7 +47,7 @@
                 name: 'title',
                 hash: {},
                 data: data,
-                loc: { start: { line: 8, column: 39 }, end: { line: 8, column: 48 } },
+                loc: { start: { line: 10, column: 39 }, end: { line: 10, column: 48 } },
               })
             : helper),
         ) +
@@ -64,7 +64,7 @@
                 name: 'description',
                 hash: {},
                 data: data,
-                loc: { start: { line: 9, column: 37 }, end: { line: 9, column: 52 } },
+                loc: { start: { line: 11, column: 37 }, end: { line: 11, column: 52 } },
               })
             : helper),
         ) +
@@ -83,7 +83,7 @@
           };
 
       return (
-        '    <img src="' +
+        '    <div class="card-img">\n        <img src="' +
         container.escapeExpression(
           ((helper =
             (helper =
@@ -96,11 +96,11 @@
                 name: 'imageUrl',
                 hash: {},
                 data: data,
-                loc: { start: { line: 5, column: 14 }, end: { line: 5, column: 26 } },
+                loc: { start: { line: 6, column: 18 }, end: { line: 6, column: 30 } },
               })
             : helper),
         ) +
-        '">\n'
+        '">\n    </div>\n'
       );
     },
     compiler: [8, '>= 4.3.0'],
@@ -126,7 +126,7 @@
             fn: container.program(1, data, 0),
             inverse: container.noop,
             data: data,
-            loc: { start: { line: 2, column: 0 }, end: { line: 12, column: 9 } },
+            loc: { start: { line: 2, column: 0 }, end: { line: 14, column: 9 } },
           },
         )) != null
           ? stack1
