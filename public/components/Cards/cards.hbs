@@ -1,7 +1,9 @@
 {{#each items}}
   <div class='card'>
     {{#if imageUrl}}
-      <img src='{{imageUrl}}' />
+    <div class="card-img">
+        <img src="{{imageUrl}}">
+    </div>
     {{/if}}
     <div class='card-content'>
       <p class='card-content-header'>{{title}}</p>
