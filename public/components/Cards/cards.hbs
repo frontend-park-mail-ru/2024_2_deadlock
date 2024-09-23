@@ -1,12 +1,11 @@
-
 {{#each items}}
-<div class="card">
+  <div class='card'>
     {{#if imageUrl}}
-    <img src="{{imageUrl}}">
+      <img src='{{imageUrl}}' />
     {{/if}}
-    <div class="card-content">
-        <p class="card-content-header">{{title}}</p>
-        <p class="card-content-text">{{description}}</p>
+    <div class='card-content'>
+      <p class='card-content-header'>{{title}}</p>
+      <p class='card-content-text'>{{description}}</p>
     </div>
-</div>
+  </div>
 {{/each}}
