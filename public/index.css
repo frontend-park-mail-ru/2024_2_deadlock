@@ -1,0 +1,21 @@
+@import './components/Cards/cards.css';
+@import './variables.css';
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+}
+
+.main-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.feed {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 40%;
+}
