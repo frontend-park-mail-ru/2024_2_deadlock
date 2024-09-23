@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
+    "prestart": "npm run compile:templates",
     "start": "DEBUG=* && node ./server/server.js",
+    "compile:templates": "handlebars public/components/Cards/cards.hbs -f public/components/Cards/cards.precompiled.js",
     "lint": "eslint . --fix && prettier --write ."
   },
   "author": "",
@@ -27,6 +29,7 @@
   },
   "dependencies": {
     "express": "^4.21.0",
+    "handlebars": "^4.7.8",
     "morgan": "^1.10.0"
   }
 }

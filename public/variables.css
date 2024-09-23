@@ -1,0 +1,10 @@
+:root {
+  --background-color: #edeef0;
+  --accent-color: #9950f6;
+  --main-color: #ffffff;
+  --hover-color: #551aa0;
+  --active-color: #b47cfb;
+  --disabled-color: #dbbfff;
+  --text-color: #000000;
+  --text-font: 'Poppins', sans-serif;
+}
