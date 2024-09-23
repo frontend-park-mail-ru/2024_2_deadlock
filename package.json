@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
-    "start": "DEBUG=* && node ./server/server.js"
+    "start": "DEBUG=* && node ./server/server.js",
+    "lint": "eslint . --fix && prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -20,8 +21,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,html,css,scss,md}": [
-      "prettier --write",
-      "eslint --fix"
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "dependencies": {
