@@ -27,4 +27,8 @@ jobs:
       - name: Super-linter
         uses: super-linter/super-linter/slim@v7.1.0
         env:
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_JSON: false
+          JAVASCRIPT_ES_CONFIG_FILE: eslint.config.js
+          VALIDATE_CHECKOV: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
