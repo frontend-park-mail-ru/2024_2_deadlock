@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky && husky install"
+    "prepare": "husky && husky install",
+    "start": "DEBUG=* && node ./server/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +23,9 @@
       "prettier --write",
       "eslint --fix"
     ]
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "morgan": "^1.10.0"
   }
 }
