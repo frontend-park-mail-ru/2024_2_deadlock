@@ -4,6 +4,7 @@ import templates from './cards.hbs';
 export default class Cards {
   constructor(parent) {
     this.parent = parent;
+    this.items = items;
   }
 
   async render() {
