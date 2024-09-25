@@ -25,7 +25,7 @@ const cardsCollection = [
       text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
       text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 
       text1 text text1 text1 text1 text1 text1 text1 text`,
-    imageUrl: 'images/2.jpg',
+    imageUrl: 'images/1.jpg',
   },
   {
     title: 'title4',
@@ -40,7 +40,7 @@ const cardsCollection = [
       text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
       text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 
       text1 text text1 text1 text1 text1 text1 text1 text`,
-    imageUrl: 'images/3.jfif',
+    imageUrl: 'images/1.jpg',
   },
 ];
 

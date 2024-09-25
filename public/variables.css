@@ -6,7 +6,7 @@
   --active-color: #b47cfb;
   --disabled-color: #dbbfff;
   --text-color: #000000;
-  --text-font: 'Poppins', sans-serif;
+  --text-font: 'Play', sans-serif;
   --card-min-height: 120px;
   --card-max-height: 150px;
   --card-gap: 10px;
@@ -19,9 +19,9 @@
   --card-content-padding-bottom: 10px;
   --card-content-p-line-height: 1.4;
   --card-content-p-margin-top: 0;
-  --card-content-header-font-weight: 500;
+  --card-content-header-font-weight: 600;
   --card-content-header-font-size: 20px;
-  --card-content-header-margin-bottom: 8px;
+  --card-content-header-margin-bottom: 20px;
   --card-content-text-font-weight: 300;
   --card-content-text-font-size: 16px;
   --main-content-feed-margin: 20px;
