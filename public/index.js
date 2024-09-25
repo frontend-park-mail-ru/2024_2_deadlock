@@ -44,6 +44,6 @@ const cardsCollection = [
   },
 ];
 
-const feed = document.querySelector('.feed');
+const feed = document.querySelector('.main-content__feed');
 const cards = new Cards(feed, cardsCollection);
 cards.render();

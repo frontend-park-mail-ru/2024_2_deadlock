@@ -12,10 +12,12 @@ body {
   justify-content: center;
 }
 
-.feed {
-  margin: 20px;
+.main-content__feed {
+  margin: var(--main-content-feed-margin);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 40%;
+  gap: var(--main-content-feed-gap);
+  margin-left: var(--main-content-feed-margin-left);
+  margin-right: var(--main-content-feed-margin-right);
+  max-width: var(--main-content-feed-max-width);
 }
