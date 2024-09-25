@@ -7,4 +7,26 @@
   --disabled-color: #dbbfff;
   --text-color: #000000;
   --text-font: 'Poppins', sans-serif;
+  --card-min-height: 120px;
+  --card-max-height: 150px;
+  --card-gap: 10px;
+  --card-padding: 10px;
+  --card-border-radius: 10px;
+  --card-img-min-width: 150px;
+  --card-img-max-width: 150px;
+  --card-img-height: 150px;
+  --card-img-border-radius: 10px;
+  --card-content-padding-bottom: 10px;
+  --card-content-p-line-height: 1.4;
+  --card-content-p-margin-top: 0;
+  --card-content-header-font-weight: 500;
+  --card-content-header-font-size: 20px;
+  --card-content-header-margin-bottom: 8px;
+  --card-content-text-font-weight: 300;
+  --card-content-text-font-size: 16px;
+  --main-content-feed-margin: 20px;
+  --main-content-feed-gap: 10px;
+  --main-content-feed-margin-left: 30vw;
+  --main-content-feed-margin-right: 30vw;
+  --main-content-feed-max-width: 500px;
 }
