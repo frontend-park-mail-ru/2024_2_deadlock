@@ -4,12 +4,5 @@
 # Node JS
 node_modules/
 
-<<<<<<< HEAD
 # Build
 dist/
-=======
-public/images
-*precompiled.js
-
-
->>>>>>> 698185b (feed fix: create new variables, bring css to BEM)
