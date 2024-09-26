@@ -78,6 +78,17 @@ const createInputDiv = (label, type, placeholder) => {
     inputText.classList.add('input-text');
     inputDiv.classList.add('input');
 
+    // добавляем глазик
+    if (inputFieldDiv.firstChild.type === 'password'){
+        const passwordControl = document.createElement('a');
+        passwordControl.href = '#';
+        passwordControl.id = 'password-control';
+        passwordControl.classList.add('password-control');
+
+        inputFieldDiv.appendChild(passwordControl);
+    }
+
+
     inputDiv.appendChild(inputText);
     inputDiv.appendChild(inputFieldDiv);
     
@@ -130,7 +141,8 @@ const config = {
 }
 
 const state = {
-    activeLink: null
+    activeLink: null,
+    hidePassword: true
 }
 
 const renderMenu = () => {
@@ -150,7 +162,7 @@ const renderMenu = () => {
 
 root.addEventListener('click', (event) => {
     const { target } = event;
-    if (target.tagName.toLowerCase() === 'a' || target instanceof HTMLAnchorElement){
+    if (target.id !== 'password-control' && (target.tagName.toLowerCase() === 'a' || target instanceof HTMLAnchorElement)) {
         event.preventDefault();
         formDiv.innerHTML = '';
         state.activeLink.classList.remove('tab-active');
@@ -164,3 +176,19 @@ root.addEventListener('click', (event) => {
 
 renderMenu();
 formDiv.appendChild(renderLogin());
+
+const passwordControl = document.getElementById('password-control');
+passwordControl.addEventListener('click', (event) => {
+    if(state.hidePassword === true){
+        passwordControl.classList.remove('password-control');
+        passwordControl.classList.add('password-control-view');
+        state.hidePassword = false;
+        passwordControl.parentElement.firstChild.type = 'text';
+    }
+    else{        
+        passwordControl.classList.remove('password-control-view');
+        passwordControl.classList.add('password-control');
+        state.hidePassword = true;
+        passwordControl.parentElement.firstChild.type = 'password';
+    }
+})

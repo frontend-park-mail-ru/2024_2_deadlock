@@ -106,3 +106,30 @@ a{
     color: var(--error-color);
     font-size: 12px;
 }
+
+.input-field{
+    position: relative;
+    display: inline;
+}
+
+.password-control, .password-control-view{
+    display: inline-block;
+    position: absolute;
+    right: 16px;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px; 
+}
+
+.password-control{
+    background: url(closedEye.png);
+    background-size: contain;
+    background-position: center;
+}
+
+.password-control-view{
+    background: url(openedEye.png);
+    background-size: contain;
+    background-position: center;
+}
+
