@@ -61,7 +61,7 @@ a{
     text-decoration: none;
 }
 
-form{
+.form{
     width: 100%;
 }
 
@@ -75,7 +75,7 @@ form{
 }
 
 .input-field-default, .input-field-error{
-    color: var(--main-color);
+    color: var(--secondary-text-color);
     height: 40px;
     min-width: 240px;
     padding-left: 16px;
