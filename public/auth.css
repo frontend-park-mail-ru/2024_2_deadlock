@@ -1,7 +1,7 @@
 @import './variables.css';
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--text-font);
     background-color: var(--background-color);
     padding: 100px;
 }
@@ -90,7 +90,7 @@ form{
 }
 
 .input-field-error{
-    border: 1px solid var(error-color);
+    border: 1px solid var(--error-color);
 }
 
 .submit-btn{
