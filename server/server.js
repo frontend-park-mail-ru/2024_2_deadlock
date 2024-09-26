@@ -8,7 +8,8 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.static(path.resolve(__dirname, '..', 'node_modules')));
-app.use(express.static(path.resolve(__dirname, 'images')));
+app.use(express.static(path.resolve(__dirname, '..', 'images')));
+app.use(express.static(path.resolve(__dirname, '..', 'components')));
 
 const port = process.env.PORT || 3000;
 

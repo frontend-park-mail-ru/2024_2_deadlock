@@ -1,0 +1,23 @@
+@import './components/Cards/cards.css';
+@import './variables.css';
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+}
+
+.main-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content__feed {
+  margin: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-left: var(--main-content-feed-margin-left);
+  margin-right: var(--main-content-feed-margin-right);
+  max-width: var(--main-content-feed-max-width);
+}
