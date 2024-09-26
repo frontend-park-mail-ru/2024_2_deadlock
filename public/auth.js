@@ -64,7 +64,6 @@ const createInputField = (type, text, name) => {
     return input;
 }
 
-
 const createInputDiv = (label, type, placeholder) => {
     const inputDiv = document.createElement('div');
     const inputText = document.createElement('div');

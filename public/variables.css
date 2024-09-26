@@ -5,6 +5,8 @@
   --hover-color: #551aa0;
   --active-color: #b47cfb;
   --disabled-color: #dbbfff;
+  --error-color: #900b09;
+  --warning-color: #D8A500;
   --text-color: #000000;
   --text-font: 'Play', sans-serif;
   --card-min-height: 120px;
