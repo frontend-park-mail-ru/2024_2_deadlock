@@ -13,10 +13,10 @@ body {
 }
 
 .main-content__feed {
-  margin: var(--main-content-feed-margin);
+  margin: var(--space-m);
   display: flex;
   flex-direction: column;
-  gap: var(--main-content-feed-gap);
+  gap: var(--space-xs);
   margin-left: var(--main-content-feed-margin-left);
   margin-right: var(--main-content-feed-margin-right);
   max-width: var(--main-content-feed-max-width);

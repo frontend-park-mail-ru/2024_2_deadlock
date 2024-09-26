@@ -5,27 +5,41 @@
   --hover-color: #551aa0;
   --active-color: #b47cfb;
   --disabled-color: #dbbfff;
+
   --text-color: #000000;
   --text-font: 'Play', sans-serif;
+
+  --space-null: 0px;
+  --space-xxs: 5px;
+  --space-xs: 10px;
+  --space-s: 15px;
+  --space-m: 20px;
+  --space-l: 25px;
+
+  --border-radius-s: 5px;
+  --border-radius-m: 10px;
+  --border-radius-l: 15px;
+
+  --font-weight-thin: 100;
+  --font-weight-semibold: 300;
+  --font-weight-bold: 600;
+
+  --text-size-xs: 12px;
+  --text-size: 16px;
+  --text-size-l: 18px;
+  --text-size-xl: 20px;
+  --text-size-h2: 24px;
+  --text-size-h1: 40px;
+
+  --line-height-s: 1.4;
+  --line-height-m: 1.6;
+  --line-height-l: 1.8;
+
   --card-min-height: 120px;
   --card-max-height: 150px;
-  --card-gap: 10px;
-  --card-padding: 10px;
-  --card-border-radius: 10px;
   --card-img-min-width: 150px;
   --card-img-max-width: 150px;
   --card-img-height: 150px;
-  --card-img-border-radius: 10px;
-  --card-content-padding-bottom: 10px;
-  --card-content-p-line-height: 1.4;
-  --card-content-p-margin-top: 0;
-  --card-content-header-font-weight: 600;
-  --card-content-header-font-size: 20px;
-  --card-content-header-margin-bottom: 20px;
-  --card-content-text-font-weight: 300;
-  --card-content-text-font-size: 16px;
-  --main-content-feed-margin: 20px;
-  --main-content-feed-gap: 10px;
   --main-content-feed-margin-left: 30vw;
   --main-content-feed-margin-right: 30vw;
   --main-content-feed-max-width: 500px;
