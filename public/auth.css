@@ -85,7 +85,11 @@ a{
     
 }
 
+<<<<<<< HEAD
 .input-field__default{
+=======
+.input-field-default{
+>>>>>>> 6149bb3 (Remove magic colors, add error and warning colors, remove empty code strings)
     border: 1px solid var(--background-color);
 }
 
