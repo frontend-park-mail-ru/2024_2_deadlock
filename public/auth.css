@@ -1,0 +1,107 @@
+@import './variables.css';
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    padding: 100px;
+}
+
+#window{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 120px;
+    padding-right: 120px;
+    align-items: center;
+    margin: auto;
+    border: 1px var(--main-color) solid;
+    border-radius: 15px;
+    background-color: var(--main-color);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 24rem;
+}
+
+.window-header{
+    font-weight: 1000;
+    font-size: 28px;
+    color: var(--accent-color);
+}
+
+#window, .window-body, .fields{
+    flex-direction: column;
+    display: flex;
+    gap: 16px;
+}
+
+.window-body{
+    width: 100%;
+    font-size: 16px;
+}
+
+.login-signup-slider-tab{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 192px;
+    height: 30px;
+    flex: none;
+    flex-grow: 0;
+}
+
+.tab-active{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a{
+    font-size: 20px;
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+form{
+    width: 100%;
+}
+
+.input{
+    width: 100%;
+}
+
+.input-text{
+    color: var(--text-color);
+    margin-bottom: 3px;
+}
+
+.input-field-default, .input-field-error{
+    color: var(--main-color);
+    height: 40px;
+    min-width: 240px;
+    padding-left: 16px;
+    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.input-field-default{
+    border: 1px solid #D9D9D9;
+}
+
+.input-field-error{
+    border: 1px solid var(error-color);
+}
+
+.submit-btn{
+    background: var(--accent-color);
+    color: white;
+    border: 0px;
+    border-radius: 8px;
+    height: 40px;
+    width: 100%;
+}
+
+.error-msg{
+    color: #900B09;
+    font-size: 12px;
+}
