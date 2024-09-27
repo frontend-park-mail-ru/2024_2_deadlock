@@ -9,7 +9,7 @@ const windowBody = document.createElement('div');
 windowBody.classList.add('window-body');
 
 const loginSetupSliderTabs = document.createElement('div');
-loginSetupSliderTabs.classList.add('login-signup-slider-tab');
+loginSetupSliderTabs.classList.add('slider-tabs');
 
 windowBody.appendChild(loginSetupSliderTabs);
 
@@ -28,7 +28,7 @@ const createForm = (action, method) => {
     return form;
 }
 
-let form = createForm('', 'get');
+let form = createForm('', 'post');
 
 const renderSignup = () => {
     form = createForm('', 'post');
@@ -67,7 +67,7 @@ const renderSignup = () => {
     reminderDiv.appendChild(reminder);
     reminderDiv.appendChild(unorderedList);
 
-    fields.classList.add('fields');
+    fields.classList.add('form-fields');
     fields.appendChild(emailInputDiv);
     fields.appendChild(passwordInputDiv);
     fields.appendChild(confirmPasswordInputDiv);
@@ -83,7 +83,7 @@ const createInputField = (type, text, name) => {
     input.type = type;
     input.name = name;
     input.placeholder = text;
-    input.classList.add('input-field-default');
+    input.classList.add('input-field__default');
 
     return input;
 }
@@ -106,7 +106,7 @@ const createInputDiv = (label, type, placeholder) => {
     if (inputFieldDiv.firstChild.type === 'password'){
         const passwordControl = document.createElement('a');
         passwordControl.href = '#';
-        passwordControl.classList.add('password-control');
+        passwordControl.classList.add('password-control__hide');
         // passwordControl.dataset.section = 'password-control';
 
         inputFieldDiv.appendChild(passwordControl);
@@ -128,7 +128,7 @@ const createButton = (label, type) => {
 }
 
 const renderLogin = () => {
-    form = createForm('', 'get');
+    form = createForm('', 'post');
 
     const fields = document.createElement('div');
 
@@ -177,7 +177,7 @@ const renderMenu = () => {
         tab.dataset.section = key;
     
         if(index === 0){
-            tab.classList.add('tab-active');
+            tab.classList.add('slider-tabs__active');
             state.activeLink = tab;
         }
         loginSetupSliderTabs.appendChild(tab);
@@ -186,11 +186,12 @@ const renderMenu = () => {
 
 root.addEventListener('click', (event) => {
     const { target } = event;
-    if (!target.classList.contains('password-control') && (target.tagName.toLowerCase() === 'a' || target instanceof HTMLAnchorElement)) {
+    if (!(target.classList.contains('password-control__hide') || target.classList.contains('password-control__view'))
+        && (target.tagName.toLowerCase() === 'a' || target instanceof HTMLAnchorElement)) {
         event.preventDefault();
         formDiv.innerHTML = '';
-        state.activeLink.classList.remove('tab-active');
-        target.classList.add('tab-active');
+        state.activeLink.classList.remove('slider-tabs__active');
+        target.classList.add('slider-tabs__active');
         state.activeLink = target;
 
         form = config.slideTabs[target.dataset.section].render
@@ -204,12 +205,14 @@ formDiv.appendChild(renderLogin());
 const passwordControl = document.getElementsByClassName('password-control').item(0);
 passwordControl.addEventListener('click', (event) => {
     if(state.hidePassword === true){
-        passwordControl.classList.add('view');
+        passwordControl.classList.add('password-control__view');
+        passwordControl.classList.remove('password-control__hide');
         state.hidePassword = false;
         passwordControl.parentElement.firstChild.type = 'text';
     }
     else{        
-        passwordControl.classList.remove('view');
+        passwordControl.classList.remove('password-control__view');
+        passwordControl.classList.add('password-control__hide');
         state.hidePassword = true;
         passwordControl.parentElement.firstChild.type = 'password';
     }
