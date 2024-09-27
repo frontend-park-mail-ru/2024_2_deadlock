@@ -1,4 +1,4 @@
-const root = document.getElementById('window');
+const root = document.getElementsByClassName('window').item(0);
 
 const windowHeader = document.createElement('div');
 windowHeader.classList.add('window-header');
@@ -44,10 +44,34 @@ const renderSignup = () => {
     const submitBtn = createButton('Зарегистрироваться', 'submit');
     submitBtn.classList.add('submit-btn');
 
+    const reminderDiv = document.createElement('div');
+    reminderDiv.classList.add('reminder');
+    const reminder = document.createElement('span');
+    reminder.innerHTML = 'Пароль должен быть длиной от 6 до 255 символов и содержать только:';
+    
+    const unorderedList = document.createElement('ul');
+    const req1 = document.createElement('li');
+    const req2 = document.createElement('li');
+    const req3 = document.createElement('li');
+
+    req1.innerHTML = 'строчные и прописные латинские буквы';
+    req2.innerHTML = 'цифры (0-9)';
+    req3.innerHTML = 'специальные символы !, ?, _, -, *, $';
+    unorderedList.appendChild(req1);
+    unorderedList.appendChild(req2);
+    unorderedList.appendChild(req3);
+    unorderedList.classList.add('reminder-ul');
+    
+    // reminder.appendChild(unorderedList);
+
+    reminderDiv.appendChild(reminder);
+    reminderDiv.appendChild(unorderedList);
+
     fields.classList.add('fields');
     fields.appendChild(emailInputDiv);
     fields.appendChild(passwordInputDiv);
     fields.appendChild(confirmPasswordInputDiv);
+    fields.appendChild(reminderDiv);
     fields.appendChild(submitBtn);
     form.appendChild(fields);
 
@@ -82,8 +106,8 @@ const createInputDiv = (label, type, placeholder) => {
     if (inputFieldDiv.firstChild.type === 'password'){
         const passwordControl = document.createElement('a');
         passwordControl.href = '#';
-        passwordControl.id = 'password-control';
         passwordControl.classList.add('password-control');
+        // passwordControl.dataset.section = 'password-control';
 
         inputFieldDiv.appendChild(passwordControl);
     }
@@ -162,7 +186,7 @@ const renderMenu = () => {
 
 root.addEventListener('click', (event) => {
     const { target } = event;
-    if (target.id !== 'password-control' && (target.tagName.toLowerCase() === 'a' || target instanceof HTMLAnchorElement)) {
+    if (!target.classList.contains('password-control') && (target.tagName.toLowerCase() === 'a' || target instanceof HTMLAnchorElement)) {
         event.preventDefault();
         formDiv.innerHTML = '';
         state.activeLink.classList.remove('tab-active');
@@ -177,17 +201,15 @@ root.addEventListener('click', (event) => {
 renderMenu();
 formDiv.appendChild(renderLogin());
 
-const passwordControl = document.getElementById('password-control');
+const passwordControl = document.getElementsByClassName('password-control').item(0);
 passwordControl.addEventListener('click', (event) => {
     if(state.hidePassword === true){
-        passwordControl.classList.remove('password-control');
-        passwordControl.classList.add('password-control-view');
+        passwordControl.classList.add('view');
         state.hidePassword = false;
         passwordControl.parentElement.firstChild.type = 'text';
     }
     else{        
-        passwordControl.classList.remove('password-control-view');
-        passwordControl.classList.add('password-control');
+        passwordControl.classList.remove('view');
         state.hidePassword = true;
         passwordControl.parentElement.firstChild.type = 'password';
     }

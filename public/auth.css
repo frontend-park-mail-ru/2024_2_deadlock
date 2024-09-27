@@ -6,7 +6,7 @@ body {
     padding: 100px;
 }
 
-#window{
+.window{
     padding-top: 60px;
     padding-bottom: 60px;
     padding-left: 120px;
@@ -26,7 +26,7 @@ body {
     color: var(--accent-color);
 }
 
-#window, .window-body, .fields{
+.window, .window-body, .fields{
     flex-direction: column;
     display: flex;
     gap: 16px;
@@ -127,9 +127,21 @@ a{
     background-position: center;
 }
 
-.password-control-view{
+.password-control.view{
     background: url(openedEye.png);
     background-size: contain;
     background-position: center;
 }
 
+.reminder{
+    color: var(--secondary-text-color);
+    position: relative;
+    gap: 0px;
+}
+
+.reminder-ul{
+    padding-top: 0px;
+    padding-left: 10px;
+    margin: 0px;
+    box-sizing: border-box;
+}
