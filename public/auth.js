@@ -28,6 +28,15 @@ root.appendChild(windowBody);
 
 const PASSWORDREXEXP = '^(?=.*[0-9])(?=.*[!?_\\-*$])[a-zA-Z0-9!?_\\-*$]+$';
 
+const createForm = (action, method) => {
+  const form = document.createElement('form');
+  form.noValidate = true;
+  form.action = action;
+  form.method = method;
+
+  return form;
+};
+
 let form = createForm('', 'post');
 
 let checkedForm;
