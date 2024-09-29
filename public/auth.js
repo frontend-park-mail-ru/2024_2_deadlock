@@ -1,3 +1,5 @@
+import Form from './components/Forms/forms.js';
+import {Menu, MENU_RENDER_TYPES} from "./components/Menu/menu.js";
 // import Handlebars from 'handlebars';
 // import { createForm } from './createFunctions';
 
@@ -28,209 +30,195 @@ root.appendChild(windowBody);
 
 const PASSWORDREXEXP = '^(?=.*[0-9])(?=.*[!?_\\-*$])[a-zA-Z0-9!?_\\-*$]+$';
 
-const createForm = (action, method) => {
-  const form = document.createElement('form');
-  form.noValidate = true;
-  form.action = action;
-  form.method = method;
 
-  return form;
-};
+const loginForm = [
+    {
+      inputLabel: 'Введите E-Mail',
+      fieldType: 'email',
+      name: 'email',
+      placeholder: 'E-Mail',
+      state: 'default',
+      minLength: 5,
+      pattern: '',
+    },
+    {
+      inputLabel: 'Введите пароль',
+      fieldType: 'password',
+      name: 'password',
+      placeholder: 'Пароль',
+      state: 'default',
+      minLength: 6,
+      pattern: '^(?=.*[0-9])(?=.*[!?_\-*$])[a-zA-Z0-9!?_\-*$]+$',
+    },
+    {
+      submitActionName: 'Войти',
+    },
+    {
+      reminder: false,
+    },
+  ]
+  
+  const signupForm = [
+    {
+      inputLabel: 'Введите E-Mail',
+      fieldType: 'email',
+      name: 'email',
+      placeholder: 'E-Mail',
+      state: 'default',
+      minLength: 5,
+      pattern: '',
+    },
+    {
+      inputLabel: 'Введите пароль',
+      fieldType: 'password',
+      name: 'password',
+      placeholder: 'Пароль',
+      state: 'default',
+      minLength: 6,
+      pattern: '^(?=.*[0-9])(?=.*[!?_\-*$])[a-zA-Z0-9!?_\-*$]+$',
+    },
+    {
+      inputLabel: 'Подтвердите пароль',
+      fieldType: 'password',
+      name: 'password',
+      placeholder: 'Подтвердите пароль',
+      state: 'default',
+      minLength: 6,
+      pattern: '^(?=.*[0-9])(?=.*[!?_\-*$])[a-zA-Z0-9!?_\-*$]+$',
+    },
+    {
+      submitActionName: 'Зарегистрироваться',
+    },
+    {
+      reminder: true,
+    },
+  ]
 
-let form = createForm('', 'post');
 
-let checkedForm;
-let email, password, confirmPassword;
 
-const renderLogin = () => {
-  form = createForm('', 'post');
 
-  const fields = document.createElement('div');
+// const renderSignup = () => {
+//   form = createForm('', 'post');
 
-  const emailInputDiv = createInputDiv('Введите E-Mail', 'email', 'E-Mail');
-  const emailField = emailInputDiv.lastChild.firstChild;
-  emailField.required = true;
-  emailField.minLength = 5;
+//   const fields = document.createElement('div');
 
-  const passwordInputDiv = createInputDiv('Введите пароль', 'password', 'Пароль');
-  const passwordField = passwordInputDiv.lastChild.firstChild;
-  passwordField.required = true;
-  passwordField.minLength = 6;
-  passwordField.maxLength = 255;
-  passwordField.pattern = PASSWORDREXEXP;
+//   const emailInputDiv = createInputDiv('Введите E-Mail', 'email', 'E-Mail');
+//   const emailField = emailInputDiv.lastChild.firstChild;
+//   emailField.required = true;
+//   emailField.minLength = 5;
 
-  const submitBtn = createButton('Войти', 'submit');
-  submitBtn.classList.add('submit-btn');
+//   const passwordInputDiv = createInputDiv('Введите пароль', 'password', 'Пароль');
+//   const passwordField = passwordInputDiv.lastChild.firstChild;
+//   passwordField.required = true;
+//   passwordField.minLength = 6;
+//   passwordField.maxLength = 255;
+//   passwordField.pattern = PASSWORDREXEXP;
 
-  fields.classList.add('fields');
-  fields.appendChild(emailInputDiv);
-  fields.appendChild(passwordInputDiv);
-  fields.appendChild(submitBtn);
-  form.appendChild(fields);
+//   const confirmPasswordInputDiv = createInputDiv(
+//     'Подтвердите пароль',
+//     'password',
+//     'Подтвердите пароль',
+//   );
+//   const confirmPasswordField = confirmPasswordInputDiv.lastChild.firstChild;
+//   confirmPasswordField.required = true;
+//   confirmPasswordField.minLength = 6;
+//   confirmPasswordField.maxLength = 255;
+//   confirmPasswordField.pattern = PASSWORDREXEXP;
 
-  checkedForm = form;
+//   const submitBtn = createButton('Зарегистрироваться', 'submit');
+//   submitBtn.classList.add('submit-btn');
 
-  email = fields.children[0].lastChild.firstChild;
-  password = fields.children[1].lastChild.firstChild;
-  return form;
-};
+//   const reminderDiv = document.createElement('div');
+//   reminderDiv.classList.add('reminder');
+//   const reminder = document.createElement('span');
+//   reminder.innerHTML = 'Пароль должен содержать:';
 
-const renderSignup = () => {
-  form = createForm('', 'post');
+//   const unorderedList = document.createElement('ul');
+//   const req1 = document.createElement('li');
+//   const req2 = document.createElement('li');
+//   const req3 = document.createElement('li');
 
-  const fields = document.createElement('div');
+//   req1.innerHTML = 'заглавные и строчные латинские буквы';
+//   req2.innerHTML = 'минимум 6 символов';
+//   req3.innerHTML = 'цифру и спецсимвол';
+//   unorderedList.appendChild(req1);
+//   unorderedList.appendChild(req2);
+//   unorderedList.appendChild(req3);
+//   unorderedList.classList.add('reminder-ul');
 
-  const emailInputDiv = createInputDiv('Введите E-Mail', 'email', 'E-Mail');
-  const emailField = emailInputDiv.lastChild.firstChild;
-  emailField.required = true;
-  emailField.minLength = 5;
+//   // reminder.appendChild(unorderedList);
 
-  const passwordInputDiv = createInputDiv('Введите пароль', 'password', 'Пароль');
-  const passwordField = passwordInputDiv.lastChild.firstChild;
-  passwordField.required = true;
-  passwordField.minLength = 6;
-  passwordField.maxLength = 255;
-  passwordField.pattern = PASSWORDREXEXP;
+//   reminderDiv.appendChild(reminder);
+//   reminderDiv.appendChild(unorderedList);
 
-  const confirmPasswordInputDiv = createInputDiv(
-    'Подтвердите пароль',
-    'password',
-    'Подтвердите пароль',
-  );
-  const confirmPasswordField = confirmPasswordInputDiv.lastChild.firstChild;
-  confirmPasswordField.required = true;
-  confirmPasswordField.minLength = 6;
-  confirmPasswordField.maxLength = 255;
-  confirmPasswordField.pattern = PASSWORDREXEXP;
+//   fields.classList.add('form-fields');
+//   fields.appendChild(emailInputDiv);
+//   fields.appendChild(passwordInputDiv);
+//   fields.appendChild(confirmPasswordInputDiv);
+//   fields.appendChild(reminderDiv);
+//   fields.appendChild(submitBtn);
+//   form.appendChild(fields);
 
-  const submitBtn = createButton('Зарегистрироваться', 'submit');
-  submitBtn.classList.add('submit-btn');
+//   checkedForm = form;
 
-  const reminderDiv = document.createElement('div');
-  reminderDiv.classList.add('reminder');
-  const reminder = document.createElement('span');
-  reminder.innerHTML = 'Пароль должен содержать:';
-
-  const unorderedList = document.createElement('ul');
-  const req1 = document.createElement('li');
-  const req2 = document.createElement('li');
-  const req3 = document.createElement('li');
-
-  req1.innerHTML = 'заглавные и строчные латинские буквы';
-  req2.innerHTML = 'минимум 6 символов';
-  req3.innerHTML = 'цифру и спецсимвол';
-  unorderedList.appendChild(req1);
-  unorderedList.appendChild(req2);
-  unorderedList.appendChild(req3);
-  unorderedList.classList.add('reminder-ul');
-
-  // reminder.appendChild(unorderedList);
-
-  reminderDiv.appendChild(reminder);
-  reminderDiv.appendChild(unorderedList);
-
-  fields.classList.add('form-fields');
-  fields.appendChild(emailInputDiv);
-  fields.appendChild(passwordInputDiv);
-  fields.appendChild(confirmPasswordInputDiv);
-  fields.appendChild(reminderDiv);
-  fields.appendChild(submitBtn);
-  form.appendChild(fields);
-
-  checkedForm = form;
-
-  email = fields.children[0].lastChild.firstChild;
-  password = fields.children[1].lastChild.firstChild;
-  confirmPassword = fields.children[2].lastChild.firstChild;
-  return form;
-};
-
-const createInputField = (type, text, name) => {
-  const input = document.createElement('input');
-  input.type = type;
-  input.name = name;
-  input.placeholder = text;
-  input.classList.add('input-field__default');
-
-  return input;
-};
-
-const createInputDiv = (label, type, placeholder) => {
-  const inputDiv = document.createElement('div');
-  const inputText = document.createElement('div');
-  const inputFieldDiv = document.createElement('div');
-
-  inputText.innerHTML = label;
-
-  const inputField = createInputField(type, placeholder, type);
-  inputFieldDiv.appendChild(inputField);
-
-  inputFieldDiv.classList.add('input-field');
-  inputText.classList.add('input-text');
-  inputDiv.classList.add('input');
-
-  // добавляем глазик
-  if (inputFieldDiv.firstChild.type === 'password') {
-    const passwordControl = document.createElement('a');
-    passwordControl.href = '#';
-    passwordControl.classList.add('password-control__hide');
-    // passwordControl.dataset.section = 'password-control';
-    inputFieldDiv.appendChild(passwordControl);
-  }
-
-  inputDiv.appendChild(inputText);
-  inputDiv.appendChild(inputFieldDiv);
-
-  return inputDiv;
-};
-
-const createButton = (label, type) => {
-  const button = document.createElement('button');
-  button.type = type;
-  button.innerHTML = label;
-
-  return button;
-};
+//   email = fields.children[0].lastChild.firstChild;
+//   password = fields.children[1].lastChild.firstChild;
+//   confirmPassword = fields.children[2].lastChild.firstChild;
+//   return form;
+// };
 
 const config = {
-  slideTabs: {
+  menu: {
     loginTab: {
       href: '/login',
       text: 'Вход',
-      render: renderLogin(),
+    //   render: renderLogin(),
     },
     signupTab: {
       href: '/signup',
       text: 'Регистрация',
-      render: renderSignup(),
+    //   render: renderSignup(),
     },
   },
 };
 
-const state = {
-  activeLink: null,
-  hidePassword: true,
-};
+const menu = new Menu(windowBody, config);
+let form;
+
+function goToPage(menuLinkElement) {
+  formDiv.innerHTML = '';
+
+  menu.state.activeLink.classList -= '__active';
+  menuLinkElement.classList += '__active';
+  menu.state.activeLink = menuLinkElement;
+  
+  if (menuLinkElement.dataset.section === 'loginTab'){
+    form = new Form(formDiv, loginForm);
+  } else if (menuLinkElement.dataset.section === 'signupTab') {
+    form = new Form(formDiv, signupForm);
+  } else {
+    return;
+  }
+  form.render();
+
+  const element = config.menu[menuLinkElement.dataset.section].render();
+
+  formDiv.appendChild(element);
+}
 
 const renderMenu = () => {
-  Object.entries(config.slideTabs).forEach(([key, { href, text }], index) => {
-    const tab = document.createElement('a');
-    tab.href = href;
-    tab.text = text;
-    tab.dataset.section = key;
+    console.log(Handlebars.templates['./components/Menu/menu.hbs']);
+    menu.render();
+    loginSetupSliderTabs.addEventListener('click', (e) => {
+        const {target} = e;
 
-    if (index === 0) {
-      tab.classList.add('slider-tabs__active');
-      state.activeLink = tab;
-    }
-    loginSetupSliderTabs.appendChild(tab);
-  });
-};
+        if (target.tagName.toLowerCase() === 'a'|| target instanceof HTMLAnchorElement) {
+            e.preventDefault();
 
-const emailErrorMsg = document.createElement('div');
-const passwordErrorMsg = document.createElement('div');
-const confirmPasswordErrorMsg = document.createElement('div');
-let emailDiv, passwordDiv, confirmPasswordDiv;
+            goToPage(target);
+        }
+    });
+}
 
 root.addEventListener('click', (event) => {
   const { target } = event;
@@ -247,7 +235,7 @@ root.addEventListener('click', (event) => {
     target.classList.add('slider-tabs__active');
     state.activeLink = target;
 
-    form = config.slideTabs[target.dataset.section].render;
+    form = config.menu[target.dataset.section].render;
     formDiv.appendChild(form);
   }
 
@@ -296,8 +284,8 @@ root.addEventListener('click', (event) => {
   }
 });
 
-renderMenu();
-formDiv.appendChild(renderLogin());
+// renderMenu();
+// formDiv.appendChild(renderLogin());
 
 // const passwordControl = document.getElementsByClassName('password-control').item(0);
 // passwordControl.addEventListener('click', (event) => {
@@ -387,3 +375,6 @@ function showError() {
     }
   }
 }
+
+renderMenu();
+goToPage(menu.state.menuElements.login);

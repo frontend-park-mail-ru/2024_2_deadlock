@@ -1,0 +1,27 @@
+
+  <form action="" method="post" novalidate>
+    <div class="fields">
+{{#each items}}
+  <div class="input">
+    <div class="input-text">
+      {{inputLabel}}
+    </div>
+
+    <div class="input-field">
+      <input type="{{fieldType}}" name="{{fieldName}}" placeholder="{{placeholder}}" class="input-field__{{state}}" required="" minlength="{{minLength}}" pattern="{{pattern}}">
+    </div>
+  </div>
+  <button type="submit" class="submit-btn">{{submitActionName}}</button>
+{{/each}}
+{{#if reminder}}
+  <span>
+    Пароль должен содержать:
+  </span>
+  <ul class="reminder-ul">
+    <li>заглавные и строчные латинские буквы</li>
+    <li>минимум 6 символов</li>
+    <li>цифру и спецсимвол</li>
+  </ul>
+{{/if}}
+</div>
+</form>
