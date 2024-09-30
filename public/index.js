@@ -38,8 +38,7 @@ const cardsCollection = [
     description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
       text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
       text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-      text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 
-      text1 text text1 text1 text1 text1 text1 text1 text`,
+      text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 `,
     imageUrl: 'images/1.jpg',
   },
 ];
