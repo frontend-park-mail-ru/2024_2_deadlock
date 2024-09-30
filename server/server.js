@@ -11,6 +11,18 @@ app.use(express.static(path.resolve(__dirname, '..', 'node_modules')));
 app.use(express.static(path.resolve(__dirname, '..', 'images')));
 app.use(express.static(path.resolve(__dirname, '..', 'components')));
 
+const router = express.Router();
+
+router.get('/auth', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'public', 'auth.html'));
+});
+
+router.get('/reg', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'public', 'reg.html'));
+});
+
+app.use('/', router);
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, function () {
