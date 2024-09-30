@@ -5,7 +5,9 @@
   --hover-color: #551aa0;
   --active-color: #b47cfb;
   --disabled-color: #dbbfff;
-
+  --error-color: #900b09;
+  --warning-color: #d8a500;
+  --secondary-text-color: #808080;
   --text-color: #000000;
   --text-font: 'Play', sans-serif;
 
