@@ -5,6 +5,7 @@
   display: flex;
   padding: var(--space-xs);
   width: 100%;
+  box-sizing: border-box;
   min-height: var(--card-min-height);
   max-height: var(--card-max-height);
   gap: var(--space-xs);
@@ -14,6 +15,7 @@
 .card-img {
   min-width: var(--card-img-min-width);
   max-width: var(--card-img-max-width);
+  max-height: 100%;
   height: var(--card-img-height);
   overflow: hidden;
   position: relative;

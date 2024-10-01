@@ -4,17 +4,17 @@
     </div>
     <div class="auth-form-links">
         {{#if context.isReg}}
-            <a class="disabled-href" href="auth.html">
+            <a class="disabled-href" data-section="auth" id="authhref" href="auth.html">
                 Войти
             </a>
-            <a class="active-href" href="reg.html">
+            <a class="active-href" data-section="reg" id="reghref" href="reg.html">
                 Регистрация
             </a>
         {{else}}
-            <a class="active-href" href="auth.html">
+            <a class="active-href" data-section="auth" id="authhref" href="auth.html">
                 Войти
             </a>
-            <a class="disabled-href" href="reg.html">
+            <a class="disabled-href" data-section="reg" id="reghref" href="reg.html">
                 Регистрация
             </a>
         {{/if}}
