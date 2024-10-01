@@ -1,3 +1,5 @@
+import Navigate from '../../navigate.js';
+
 export default class Forms {
   constructor(parent, context) {
     this.parent = parent;
@@ -20,6 +22,18 @@ export default class Forms {
     this.parent.innerHTML = template({ context: this.context });
     const AuthForm = document.querySelector('.auth-form-inputs');
     AuthForm.addEventListener('submit', this.handleSubmit.bind(this));
+
+    const AuthHref = document.querySelector('#authhref');
+    AuthHref.addEventListener('click', (event) => {
+      event.preventDefault();
+      Navigate('auth');
+    });
+
+    const RegHref = document.querySelector('#reghref');
+    RegHref.addEventListener('click', (event) => {
+      event.preventDefault();
+      Navigate('reg');
+    });
   }
 
   handleSubmit(event) {

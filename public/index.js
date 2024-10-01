@@ -1,48 +1,10 @@
+import Forms from './components/Forms/forms.js';
 import Cards from './components/Cards/cards.js';
+import Navigate from './navigate.js';
 
-const cardsCollection = [
-  {
-    title: 'What is Lorem Ipsum? What is Lorem Ipsum?',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-      text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-      text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-      text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-      text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-      text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-      `,
-    imageUrl: 'images/1.jpg',
-  },
-  {
-    title: 'title2',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-      text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-      `,
-  },
-  {
-    title: 'title3',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-      text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-      text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-      text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 
-      text1 text text1 text1 text1 text1 text1 text1 text`,
-    imageUrl: 'images/1.jpg',
-  },
-  {
-    title: 'title4',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-      text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-      `,
-  },
-  {
-    title: 'title3',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-      text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-      text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-      text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 `,
-    imageUrl: 'images/1.jpg',
-  },
-];
+window.addEventListener('popstate', () => {
+  const path = window.location.pathname.slice(1);
+  Navigate(path);
+});
 
-const feed = document.querySelector('.main-content__feed');
-const cards = new Cards(feed, cardsCollection);
-cards.render();
+Navigate('feed');

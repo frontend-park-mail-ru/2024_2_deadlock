@@ -1,9 +1,11 @@
 @import './components/Cards/cards.css';
+@import './components/Forms/forms.css';
 @import './variables.css';
 
 body {
   margin: 0;
   background-color: var(--background-color);
+  font-family: var(--text-font);
 }
 
 .main-content {
@@ -12,12 +14,14 @@ body {
   justify-content: center;
 }
 
-.main-content__feed {
+.items-container {
   margin: var(--space-m);
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
   margin-left: var(--main-content-feed-margin-left);
   margin-right: var(--main-content-feed-margin-right);
+  padding: var(--space-xs);
+  width: 100%;
   max-width: var(--main-content-feed-max-width);
 }
