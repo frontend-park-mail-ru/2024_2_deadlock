@@ -13,12 +13,8 @@ app.use(express.static(path.resolve(__dirname, '..', 'components')));
 
 const router = express.Router();
 
-router.get('/auth', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'public', 'auth.html'));
-});
-
-router.get('/reg', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'public', 'reg.html'));
+router.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 app.use('/', router);
