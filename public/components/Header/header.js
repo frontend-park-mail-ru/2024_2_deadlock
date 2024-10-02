@@ -28,7 +28,7 @@ export default class Header {
 
   async Logout() {
     const response = await Ajax({
-      url: 'http://dead-vc.ru',
+      url: 'http://dead-vc.ru/api/v1/logout',
       method: 'POST',
     });
 
