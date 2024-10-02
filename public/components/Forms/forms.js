@@ -85,7 +85,7 @@ export default class Forms {
 
   async Register({ password, email }) {
     const response = await Ajax({
-      url: 'http://localhost:8000/api/v1/register',
+      url: 'http://dead-vc.ru',
       method: 'POST',
       body: {
         password,
@@ -115,7 +115,7 @@ export default class Forms {
 
   async Login({ password, email }) {
     const response = await Ajax({
-      url: 'http://localhost:8000/api/v1/login',
+      url: 'http://dead-vc.ru',
       method: 'POST',
       body: {
         password,
