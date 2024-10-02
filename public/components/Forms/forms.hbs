@@ -47,8 +47,8 @@
         {{/if}}
         <button type="submit">Войти</button>
     </form>
-    {{#unless context.isPasswordCorrect}}
     <div class="password-rules">
+        {{#unless context.isPasswordCorrect}}
         Пароль должен быть длиной от 6 до 255 символов и содержать только:
         <ul>
             <li>
@@ -61,6 +61,9 @@
                 специальные символы ?,!,_,-,$
             </li>
         </ul>
+        {{/unless}}
+        {{#if context.isApiError}}
+            {{context.apiErrorText}}
+        {{/if}}
     </div>
-    {{/unless}}
 </div>

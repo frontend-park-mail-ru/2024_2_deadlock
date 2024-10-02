@@ -48,22 +48,15 @@ const cardsCollection = [
   },
 ];
 
-const context = {
-  isReg: false,
-  isEmailCorrect: true,
-  isPasswordCorrect: true,
-  isPasswordRepeatCorrect: true,
-};
-
 function renderAuth() {
-  context.isReg = false;
-  const forms = new Forms(itemsContainer, context);
+  const forms = new Forms(itemsContainer);
+  forms.context.isReg = false;
   forms.render();
 }
 
 function renderReg() {
-  context.isReg = true;
-  const forms = new Forms(itemsContainer, context);
+  const forms = new Forms(itemsContainer);
+  forms.context.isReg = true;
   forms.render();
 }
 
