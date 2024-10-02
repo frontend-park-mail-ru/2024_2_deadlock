@@ -5,49 +5,6 @@ import Header from './components/Header/header.js';
 const itemsContainer = document.querySelector('.items-container');
 const placeForHeader = document.querySelector('.place-for-header');
 
-const cardsCollection = [
-  {
-    title: 'What is Lorem Ipsum? What is Lorem Ipsum?',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-          text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-          `,
-    imageUrl: 'images/1.jpg',
-  },
-  {
-    title: 'title2',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          `,
-  },
-  {
-    title: 'title3',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-          text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 
-          text1 text text1 text1 text1 text1 text1 text1 text`,
-    imageUrl: 'images/1.jpg',
-  },
-  {
-    title: 'title4',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          `,
-  },
-  {
-    title: 'title3',
-    description: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-          text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 `,
-    imageUrl: 'images/1.jpg',
-  },
-];
-
 function renderAuth() {
   const forms = new Forms(itemsContainer);
   forms.context.isReg = false;
@@ -62,7 +19,7 @@ function renderReg() {
 
 function renderFeed() {
   const header = new Header(placeForHeader);
-  const cards = new Cards(itemsContainer, cardsCollection);
+  const cards = new Cards(itemsContainer);
   cards.render();
   header.render();
 }
