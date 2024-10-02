@@ -26,8 +26,9 @@ export default async function Ajax({ method, url, body = null }) {
       body: 'failed to parse respBody',
     };
   }
+  // console.log('respBody', respBody);
 
-  if (response.status <= 400) {
+  if (response.status >= 400) {
     return {
       status: response.status,
       error: respBody,

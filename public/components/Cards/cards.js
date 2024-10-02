@@ -1,45 +1,4 @@
-const cardsCollection = [
-  {
-    Title: 'What is Lorem Ipsum? What is Lorem Ipsum?',
-    Body: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-          text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-          `,
-    MediaUrl: 'images/1.jpg',
-  },
-  {
-    Title: 'title2',
-    Body: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          `,
-  },
-  {
-    Title: 'title3',
-    Body: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-          text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 
-          text1 text text1 text1 text1 text1 text1 text1 text`,
-    MediaUrl: 'images/1.jpg',
-  },
-  {
-    Title: 'title4',
-    Body: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          `,
-  },
-  {
-    Title: 'title3',
-    Body: `text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 
-          text1 text1 text text1 text1 text1 text1 text1 text1 text text1 text1  
-          text1 text1 text1 text1 text text1 text1 text1 text1 text1 text1 text 
-          text1 text1 text1 text1 text1 text1 text text1 text1 text1 text1 text1 `,
-    MediaUrl: 'images/1.jpg',
-  },
-];
+import Ajax from '../../ajax.js';
 
 export default class Cards {
   constructor(parent, items) {
@@ -47,25 +6,22 @@ export default class Cards {
     this.items = {};
   }
 
-  render() {
+  async render() {
     const template = Handlebars.templates['cards.hbs'];
-    this.getCurrentCards2();
+    await this.getCurrentCards2();
     this.parent.innerHTML = template({ items: this.items });
-  }
-
-  getCurrentCards() {
-    this.items = cardsCollection;
   }
 
   async getCurrentCards2() {
     const response = await Ajax({
-      url: 'http://localhost:8000/api/v1/cards',
+      url: 'http://localhost:8000/api/v1/feed',
       method: 'GET',
     });
 
     switch (response.status) {
       case 200:
-        this.items = response.body;
+        this.items = response.body.data;
+        console.log(this.items);
         break;
       default:
         console.error('Error', response.status, response.error);
