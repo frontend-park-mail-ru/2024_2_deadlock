@@ -1,5 +1,6 @@
 @import './components/Cards/cards.css';
 @import './components/Forms/forms.css';
+@import './components/Header/header.css';
 @import './variables.css';
 
 body {

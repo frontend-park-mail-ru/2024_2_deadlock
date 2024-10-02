@@ -4,7 +4,11 @@
         DEAD-VC
     </div>
     <div class="header-buttons">
+        {{#if user.isAuthorized}}
+        <button id="logout-button">Выйти</button>
+        {{else}}
         <button id="enter-button">Войти</button>
+        {{/if}}
     </div>
     </div>
 </div>
