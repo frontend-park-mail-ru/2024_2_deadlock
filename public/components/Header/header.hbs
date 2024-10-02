@@ -6,6 +6,7 @@
     <div class="header-buttons">
         {{#if user.isAuthorized}}
         <button id="logout-button">Выйти</button>
+        <p>{{user.email}}</p>
         {{else}}
         <button id="enter-button">Войти</button>
         {{/if}}
