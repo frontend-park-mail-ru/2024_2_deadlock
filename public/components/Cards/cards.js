@@ -49,7 +49,7 @@ export default class Cards {
 
   render() {
     const template = Handlebars.templates['cards.hbs'];
-    this.getCurrentCards();
+    this.getCurrentCards2();
     this.parent.innerHTML = template({ items: this.items });
   }
 
