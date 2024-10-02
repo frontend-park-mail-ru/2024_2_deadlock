@@ -1,13 +1,13 @@
 {{#each items}}
   <div class='card'>
-    {{#if imageUrl}}
+    {{#if MediaUrl}}
     <div class="card-img">
-        <img src="{{imageUrl}}">
+        <img src="{{MediaUrl}}">
     </div>
     {{/if}}
     <div class='card-content'>
-      <p class='card-content__header'>{{title}}</p>
-      <p class='card-content__text'>{{description}}</p>
+      <p class='card-content__header'>{{Title}}</p>
+      <p class='card-content__text'>{{Body}}</p>
     </div>
   </div>
 {{/each}}
