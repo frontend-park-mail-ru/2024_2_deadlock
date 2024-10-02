@@ -14,7 +14,7 @@ export default class Cards {
 
   async getCurrentCards2() {
     const response = await Ajax({
-      url: 'http://dead-vc.ru',
+      url: 'http://dead-vc.ru/api/v1/feed',
       method: 'GET',
     });
 
