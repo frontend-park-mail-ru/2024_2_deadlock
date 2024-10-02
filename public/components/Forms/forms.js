@@ -97,6 +97,7 @@ export default class Forms {
       case 200:
         this.context.isApiError = false;
         userState.login();
+        userState.setEmail(email);
         Navigate('feed');
         break;
       case 409:
@@ -127,6 +128,7 @@ export default class Forms {
       case 200:
         this.context.isApiError = false;
         userState.login();
+        userState.setEmail(email);
         Navigate('feed');
         break;
       case 404:

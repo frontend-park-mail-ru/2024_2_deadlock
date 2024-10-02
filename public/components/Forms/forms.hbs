@@ -45,7 +45,11 @@
                 <label class="label-error" for="password-input-repeat">Пароли не совпадают</label>
             {{/if}}
         {{/if}}
+        {{#if context.isReg}}
         <button type="submit">Создать аккаунт</button>
+        {{else}}
+        <button type="submit">Войти</button>
+        {{/if}}
     </form>
     <div class="password-rules">
         {{#unless context.isPasswordCorrect}}

@@ -36,6 +36,7 @@ export default class Header {
       case 200:
         console.log('Logout successful', response.status, response.body);
         userState.logout();
+        userState.removeEmail();
         Navigate('feed');
         break;
       default:

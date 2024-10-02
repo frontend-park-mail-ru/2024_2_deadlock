@@ -1,6 +1,7 @@
 class UserState {
   constructor() {
     this.isAuthorized = false;
+    this.email = '';
   }
 
   login() {
@@ -9,6 +10,14 @@ class UserState {
 
   logout() {
     this.isAuthorized = false;
+  }
+
+  setEmail(email) {
+    this.email = email;
+  }
+
+  removeEmail() {
+    this.email = '';
   }
 }
 
