@@ -6,9 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
-    "prestart": "npm run compile:templates",
+    "prestart": "npm run compile:templates && npm run compile:forms && npm run compile:header",
     "start": "DEBUG=* && node ./server/server.js",
     "compile:templates": "handlebars public/components/Cards/cards.hbs -f public/components/Cards/cards.precompiled.js",
+    "compile:forms": "handlebars public/components/Forms/forms.hbs -f public/components/Forms/forms.precompiled.js",
+    "compile:header": "handlebars public/components/Header/header.hbs -f public/components/Header/header.precompiled.js",
     "lint": "eslint . --fix && prettier --write ."
   },
   "author": "",
@@ -28,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.0",
     "handlebars": "^4.7.8",
     "morgan": "^1.10.0"

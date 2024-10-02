@@ -1,0 +1,73 @@
+<div class="auth-form">
+    <div class="auth-form-header">
+        DEAD-VC
+    </div>
+    <div class="auth-form-links">
+        {{#if context.isReg}}
+            <a class="disabled-href" data-section="auth" id="authhref" href="auth.html">
+                Войти
+            </a>
+            <a class="active-href" data-section="reg" id="reghref" href="reg.html">
+                Регистрация
+            </a>
+        {{else}}
+            <a class="active-href" data-section="auth" id="authhref" href="auth.html">
+                Войти
+            </a>
+            <a class="disabled-href" data-section="reg" id="reghref" href="reg.html">
+                Регистрация
+            </a>
+        {{/if}}
+    </div>
+    <form class="auth-form-inputs" action="" method="post">
+        <label class="label-hint" for="email-input">Email</label>
+        {{#if context.isEmailCorrect}}
+            <input class="input-correct" id="email-input" type="email" placeholder="Введите Email">
+        {{else}}
+            <input class="input-error" id="email-input" type="email" placeholder="Введите Email">
+            <label class="label-error" for="email-input">Ошибочный Email</label>
+        {{/if}}
+
+        <label class="label-hint" for="password-input">Пароль</label>
+        {{#if context.isPasswordCorrect}}
+            <input class="input-correct" id="password-input" type="password" placeholder="Введите пароль">
+        {{else}}
+            <input class="input-error" id="password-input" type="password" placeholder="Введите пароль">
+            <label class="label-error" for="password-input">Ошибочный пароль</label>
+        {{/if}}
+
+        {{#if context.isReg}}
+        <label class="label-hint" for="password-input-repeat">Подтверждение пароля</label>
+            {{#if context.isPasswordRepeatCorrect}}
+                <input class="input-correct" id="password-input-repeat" type="password" placeholder="Повторите пароль">
+            {{else}}
+                <input class="input-error" id="password-input-repeat" type="password" placeholder="Повторите пароль">
+                <label class="label-error" for="password-input-repeat">Пароли не совпадают</label>
+            {{/if}}
+        {{/if}}
+        {{#if context.isReg}}
+        <button type="submit">Создать аккаунт</button>
+        {{else}}
+        <button type="submit">Войти</button>
+        {{/if}}
+    </form>
+    <div class="password-rules">
+        {{#unless context.isPasswordCorrect}}
+        Пароль должен быть длиной от 6 до 255 символов и содержать только:
+        <ul>
+            <li>
+                строчные и прописные латинские буквы
+            </li>
+            <li>
+                цифры (0-9)
+            </li>
+            <li>
+                специальные символы ?,!,_,-,$
+            </li>
+        </ul>
+        {{/unless}}
+        {{#if context.isApiError}}
+            {{context.apiErrorText}}
+        {{/if}}
+    </div>
+</div>

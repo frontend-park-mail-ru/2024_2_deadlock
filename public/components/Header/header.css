@@ -1,0 +1,40 @@
+@import '/public/variables.css';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-xs);
+  height: 50px;
+  background-color: var(--main-color);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
+
+.header-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: var(--text-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--accent-color);
+}
+
+.header-buttons {
+  gap: var(--space-xs);
+  display: flex;
+}
+
+.header-buttons button {
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--main-color);
+  border: 0 none;
+  background-color: var(--accent-color);
+}

@@ -11,6 +11,14 @@ app.use(express.static(path.resolve(__dirname, '..', 'node_modules')));
 app.use(express.static(path.resolve(__dirname, '..', 'images')));
 app.use(express.static(path.resolve(__dirname, '..', 'components')));
 
+const router = express.Router();
+
+router.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
+app.use('/', router);
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, function () {
