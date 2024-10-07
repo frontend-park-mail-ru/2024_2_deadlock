@@ -7,9 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
-    "start": "webpack serve",
-    "lint": "eslint . --fix && prettier --write .",
-    "build": "webpack"
+    "start": "DEBUG=* && node server/server.js",
+    "lint": "eslint . --fix && prettier --write ."
   },
   "author": "",
   "license": "ISC",
