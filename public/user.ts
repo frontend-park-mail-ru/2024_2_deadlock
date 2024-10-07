@@ -5,10 +5,12 @@ class UserState {
   isAuthorized: boolean;
   email: string;
   name: string;
+  password: string;
   constructor() {
     this.isAuthorized = false;
     this.email = '';
     this.name = '';
+    this.password = '';
   }
 
   login() {
@@ -33,6 +35,14 @@ class UserState {
 
   removeName() {
     this.name = '';
+  }
+
+  setPassword(password: string) {
+    this.password = password;
+  }
+
+  removePassword() {
+    this.password = '';
   }
 }
 
