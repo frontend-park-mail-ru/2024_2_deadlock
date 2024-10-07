@@ -50,6 +50,8 @@
     ]
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "handlebars": "^4.7.8",
