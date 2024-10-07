@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
     "start": "DEBUG=* && node server/server.js",
-    "lint": "eslint . --fix && prettier --write ."
+    "lint": "eslint . --fix && prettier --write .",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
