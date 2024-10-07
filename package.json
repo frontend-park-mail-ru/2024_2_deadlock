@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "./node_modules/.bin/tsc --project ./tsconfig.json --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
     "prestart": "npm run compile:templates && npm run compile:forms && npm run compile:header",
@@ -21,7 +22,8 @@
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "prettier": "3.3.3"
+    "prettier": "3.3.3",
+    "typescript": "^5.6.2"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,html,css,scss,md}": [
@@ -30,6 +32,8 @@
     ]
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "handlebars": "^4.7.8",
