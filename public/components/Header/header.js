@@ -24,6 +24,12 @@ export default class Header {
         Navigate('auth');
       });
     }
+
+    const profileButton = document.querySelector('#profile-button');
+    profileButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      Navigate('profile');
+    });
   }
 
   async Logout() {
