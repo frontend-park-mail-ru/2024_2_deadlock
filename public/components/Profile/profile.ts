@@ -1,0 +1,24 @@
+import Navigate from '../../navigate.js';
+import userState from '../../user.js';
+
+interface Profile {
+  parent: Element;
+  context: {
+    isPosts: boolean;
+  };
+}
+
+class Profile {
+  constructor(parent: Element) {
+    this.parent = parent;
+    this.context = {
+      isPosts: true,
+    };
+  }
+
+  render() {
+    const template = Handlebars.templates['profile.hbs'];
+    this.parent.innerHTML = template({ user: userState, context: this.context });
+  }
+}
+export default Profile;

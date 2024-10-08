@@ -7,23 +7,27 @@
     "build": "./node_modules/.bin/tsc --project ./tsconfig.json --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
-    "prestart": "npm run compile:templates && npm run compile:forms && npm run compile:header",
+    "prestart": "npm run compile:templates && npm run compile:forms && npm run compile:header && npm run compile:profile",
     "start": "DEBUG=* && node ./server/server.js",
     "compile:templates": "handlebars public/components/Cards/cards.hbs -f public/components/Cards/cards.precompiled.js",
     "compile:forms": "handlebars public/components/Forms/forms.hbs -f public/components/Forms/forms.precompiled.js",
     "compile:header": "handlebars public/components/Header/header.hbs -f public/components/Header/header.precompiled.js",
+    "compile:profile": "handlebars public/components/Profile/profile.hbs -f public/components/Profile/profile.precompiled.js",
     "lint": "eslint . --fix && prettier --write ."
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^9.11.0",
+    "@eslint/js": "^9.12.0",
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "3.3.3",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.8.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,html,css,scss,md}": [
@@ -32,8 +36,6 @@
     ]
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.8.0",
-    "@typescript-eslint/parser": "^8.8.0",
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "handlebars": "^4.7.8",

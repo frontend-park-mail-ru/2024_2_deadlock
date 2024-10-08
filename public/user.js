@@ -1,38 +1,36 @@
 'use strict';
-// interface UserState {
-// }
-// Object.defineProperty(exports, "__esModule", { value: true });
-class UserState {
-  constructor() {
+var UserState = /** @class */ (function () {
+  function UserState() {
     this.isAuthorized = false;
     this.email = '';
     this.name = '';
     this.password = '';
   }
-  login() {
+  UserState.prototype.login = function () {
     this.isAuthorized = true;
-  }
-  logout() {
+  };
+  UserState.prototype.logout = function () {
     this.isAuthorized = false;
-  }
-  setEmail(email) {
+  };
+  UserState.prototype.setEmail = function (email) {
     this.email = email;
-  }
-  removeEmail() {
+  };
+  UserState.prototype.removeEmail = function () {
     this.email = '';
-  }
-  setName(name) {
+  };
+  UserState.prototype.setName = function (name) {
     this.name = name;
-  }
-  removeName() {
+  };
+  UserState.prototype.removeName = function () {
     this.name = '';
-  }
-  setPassword(password) {
+  };
+  UserState.prototype.setPassword = function (password) {
     this.password = password;
-  }
-  removePassword() {
+  };
+  UserState.prototype.removePassword = function () {
     this.password = '';
-  }
-}
-const userState = new UserState();
+  };
+  return UserState;
+})();
+var userState = new UserState();
 export default userState;

@@ -1,6 +1,3 @@
-// interface UserState {
-// }
-
 class UserState {
   isAuthorized: boolean;
   email: string;
