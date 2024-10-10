@@ -1,5 +1,5 @@
 const path = require('path');
-const PostcssPresetEnv = require('postcss-preset-env');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -17,7 +17,26 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    'postcss-preset-env',
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+          'sass-loader',
+        ],
       },
     ],
   },
@@ -28,9 +47,5 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  plugins: [
-    PostcssPresetEnv({
-      browsers: 'last 2 versions',
-    }),
-  ],
+  plugins: [new HtmlWebpackPlugin()],
 };
