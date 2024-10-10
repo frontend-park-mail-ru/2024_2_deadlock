@@ -14,6 +14,6 @@ module.exports = [
       'prettier/prettier': 'error',
       semi: ['warn', 'always'],
     },
-    ignores: ['node_modules/', 'dist/'],
+    ignores: ['node_modules/*', 'dist/*'],
   },
 ];
