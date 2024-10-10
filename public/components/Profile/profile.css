@@ -12,15 +12,46 @@
   max-height: var(--profile-header-img-max-height);
 }
 
+.profile-body-header {
+  margin-bottom: 12px;
+}
+
 .profile-avatar {
   display: var(--profile-avatar-display);
   border-radius: var(--profile-avatar-border-radius);
   overflow: var(--profile-avatar-overflow);
   width: var(--profile-avatar-width);
   height: var(--profile-avatar-height);
+  margin-top: -55px;
+  position: relative;
 }
 .profile-avatar img {
   width: var(--profile-avatar-img-width);
   height: var(--profile-avatar-img-height);
   object-fit: var(--profile-avatar-img-object-fit);
+}
+
+.profile-body {
+  padding-left: 30px;
+}
+
+.profile-name {
+  margin-bottom: 8px;
+}
+
+.profile__registration-date {
+  margin-bottom: 12px;
+}
+
+.followers {
+  display: inline-flex;
+}
+
+.followers__item {
+  width: fit-content;
+  margin-right: 12px;
+}
+
+.profile-links {
+  margin-top: 12px;
 }
