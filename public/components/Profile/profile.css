@@ -24,6 +24,7 @@
   height: var(--profile-avatar-height);
   margin-top: -55px;
   position: relative;
+  border: 1px solid var(--accent-color);
 }
 .profile-avatar img {
   width: var(--profile-avatar-img-width);
@@ -31,16 +32,25 @@
   object-fit: var(--profile-avatar-img-object-fit);
 }
 
+.profile {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
 .profile-body {
   padding-left: 30px;
+  font-family: var(--text-font);
+  background-color: var(--main-color);
 }
 
 .profile-name {
+  font-size: var(--text-size-h3);
   margin-bottom: 8px;
 }
 
 .profile__registration-date {
   margin-bottom: 12px;
+  color: var(--secondary-text-color);
 }
 
 .followers {
@@ -53,5 +63,20 @@
 }
 
 .profile-links {
-  margin-top: 12px;
+  margin-top: 24px;
+  justify-content: center;
+  /* display: inline-flex; */
+}
+
+.profile-links a {
+  color: var(--secondary-text-color);
+  margin-right: 12px;
+}
+
+.profile-links .active-href {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--accent-color);
+  text-decoration-thickness: 2px;
+  color: var(--text-color);
 }

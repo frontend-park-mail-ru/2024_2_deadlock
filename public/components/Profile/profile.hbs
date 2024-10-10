@@ -1,38 +1,36 @@
-<div class="profile-header">
-  <img src="{{user.header}}" alt="Oops!">
-</div>
-<div class="profile-body">
-  <div class="profile-body-header">
-    <div class="profile-avatar-header">
-      <div class="profile-avatar">
-        <img src="{{user.avatar}}" alt="Oops!">
+<div class="profile">
+  <div class="profile-header">
+    <img src="{{user.header}}" alt="Oops!">
+  </div>
+  <div class="profile-body">
+    <div class="profile-body-header">
+      <div class="profile-avatar-header">
+        <div class="profile-avatar">
+          <img src="{{user.avatar}}" alt="Oops!">
+        </div>
+      </div>
+      <div class="profile-settings__button">
+
       </div>
     </div>
-    <div class="profile-settings__button">
-
+    <div class="profile-name">
+      {{user.name}}
     </div>
-  </div>
-  <div class="profile-name">
-    {{user.name}}
-  </div>
-  <div class="profile__registration-date">
-    с {{user.registrationDate}}
-  </div>
-  <div class="followers">
-    <div class="followers__item">
-      {{user.subcribers}} подписчиков
+    <div class="profile__registration-date">
+      с {{user.registrationDate}}
     </div>
-    <div class="followers__item">
-      {{user.subscriptions}} подписок
+    <div class="followers">
+      <div class="followers__item">
+        {{user.subcribers}} подписчиков
+      </div>
+      <div class="followers__item">
+        {{user.subscriptions}} подписок
+      </div>
     </div>
-  </div>
-  <div class="profile-links">
-    {{#if context.isPosts}}
-      <a href="" class="active-href" data-section="posts">Посты</a>
-      <a href="" class="disabled-href" data-section="comments">Комментарии</a>
-    {{else}}
-      <a href="" class="disabled-href" data-section="posts">Посты</a>
-      <a href="" class="active-href" data-section="comments">Комментарии</a>
-    {{/if}}
+    <div class="profile-links">
+      {{#if context.isPosts}}
+        <a href="" class="active-href" data-section="posts">Посты</a>
+        <a href="" data-section="comments">Комментарии</a>
+    </div>
   </div>
 </div>
