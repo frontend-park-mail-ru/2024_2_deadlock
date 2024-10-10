@@ -45,4 +45,22 @@
   --main-content-feed-margin-left: 30vw;
   --main-content-feed-margin-right: 30vw;
   --main-content-feed-max-width: 500px;
+
+  --profile-header-min-width: 500px;
+  --profile-header-max-width: 500px;
+  --profile-header-min-height: 150px;
+  --profile-header-max-height: 150px;
+  --profile-header-img-min-width: 500px;
+  --profile-header-img-max-width: 500px;
+  --profile-header-img-min-height: 150px;
+  --profile-header-img-max-height: 150px;
+
+  --profile-avatar-display: inline-block;
+  --profile-avatar-border-radius: 50%;
+  --profile-avatar-overflow: hidden;
+  --profile-avatar-width: 50px;
+  --profile-avatar-height: 50px;
+  --profile-avatar-img-width: 100%;
+  --profile-avatar-img-height: 100%;
+  --profile-avatar-img-object-fit: cover;
 }
