@@ -1,4 +1,5 @@
 const path = require('path');
+const PostcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
   entry: './src/index.ts',
@@ -7,31 +8,12 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              targets: 'defaults',
-              presets: [['@babel/preset-env']],
-            },
-          },
-          {
-            loader: 'ts-loader',
-          },
-        ],
+        use: ['babel-loader', 'ts-loader'],
       },
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              targets: 'defaults',
-              presets: [['@babel/preset-env']],
-            },
-          },
-        ],
+        use: 'babel-loader',
       },
       {
         test: /\.(sa|sc|c)ss$/i,
@@ -47,7 +29,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    require('postcss-preset-env')({
+    PostcssPresetEnv({
       browsers: 'last 2 versions',
     }),
   ],
