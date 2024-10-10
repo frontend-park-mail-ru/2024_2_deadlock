@@ -10,7 +10,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.(sa|sc|c)ss$/i,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
     ],
