@@ -1,0 +1,26 @@
+.profile-header {
+  min-width: var(--profile-header-min-width);
+  max-width: var(--profile-header-max-width);
+  min-height: var(--profile-header-min-height);
+  max-height: var(--profile-header-max-height);
+}
+
+.profile-header img {
+  min-width: var(--profile-header-img-min-width);
+  max-width: var(--profile-header-img-max-width);
+  min-height: var(--profile-header-img-min-height);
+  max-height: var(--profile-header-img-max-height);
+}
+
+.profile-avatar {
+  display: var(--profile-avatar-display);
+  border-radius: var(--profile-avatar-border-radius);
+  overflow: var(--profile-avatar-overflow);
+  width: var(--profile-avatar-width);
+  height: var(--profile-avatar-height);
+}
+.profile-avatar img {
+  width: var(--profile-avatar-img-width);
+  height: var(--profile-avatar-img-height);
+  object-fit: var(--profile-avatar-img-object-fit);
+}

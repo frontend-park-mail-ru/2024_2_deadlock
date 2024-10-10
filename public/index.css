@@ -2,6 +2,7 @@
 @import './components/Forms/forms.css';
 @import './components/Header/header.css';
 @import './variables.css';
+@import './components/Profile/profile.css';
 
 body {
   margin: 0;
