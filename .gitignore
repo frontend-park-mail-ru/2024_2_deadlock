@@ -3,3 +3,6 @@
 
 # Node JS
 node_modules/
+
+# Build
+dist/
