@@ -30,8 +30,10 @@
   --text-size: 16px;
   --text-size-l: 18px;
   --text-size-xl: 20px;
-  --text-size-h2: 24px;
+  --text-size-h2: 32px;
   --text-size-h1: 40px;
+  --text-size-h3: 24px;
+  --text-size-h4: 18px;
 
   --line-height-s: 1.4;
   --line-height-m: 1.6;
@@ -55,11 +57,11 @@
   --profile-header-img-min-height: 150px;
   --profile-header-img-max-height: 150px;
 
-  --profile-avatar-display: inline-block;
+  --profile-avatar-display: flex;
   --profile-avatar-border-radius: 50%;
   --profile-avatar-overflow: hidden;
-  --profile-avatar-width: 50px;
-  --profile-avatar-height: 50px;
+  --profile-avatar-width: 110px;
+  --profile-avatar-height: 110px;
   --profile-avatar-img-width: 100%;
   --profile-avatar-img-height: 100%;
   --profile-avatar-img-object-fit: cover;
