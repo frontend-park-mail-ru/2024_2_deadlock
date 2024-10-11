@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="profile-settings__button">
-
+      
       </div>
     </div>
     <div class="profile-name">
@@ -28,9 +28,12 @@
       </div>
     </div>
     <div class="profile-links">
-      {{#if context.isPosts}}
         <a href="" class="active-href" data-section="posts">Посты</a>
-        <a href="" data-section="comments">Комментарии</a>
+        <a href="" class="disabled-href" data-section="comments">Комментарии</a>
     </div>
   </div>
+<div class="content">
+  {{#if user.context == isPosts}}
+    
+  {{#if}}
 </div>
