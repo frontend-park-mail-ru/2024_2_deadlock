@@ -1,0 +1,25 @@
+<div class="settings">
+  <div class="settings-header">
+    Настройки
+  </div>
+  <div class="settings-body">
+    <div class="settings-body__blog">
+      <form action="" method="post">
+        <label class="label-hint" for="name-input">Название</label>
+        {{#if context.isNameCorrect}}
+          <input class="input-correct" id="name-input" type="text" placeholder="Введите название">
+        {{else}}
+          <input class="input-error" id="name-input" type="text" placeholder="Введите название">
+          <label class="label-error" for="name-input">Некорректное название</label>
+        {{/if}}
+        <label class="label-hint" for="description-input">Описание</label>
+        {{#if context.isDescriptionCorrect}}
+          <textarea id="description-input" class="textarea-correct" placeholder="Пара слов о себе"></textarea>
+        {{else}}
+          <textarea name="" id="description-input" class="textarea-error" placeholder="Пара слов о себе"></textarea>
+          <label class="label-error" for="name-description">Некорректное описание</label>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+</div>

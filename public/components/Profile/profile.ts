@@ -19,6 +19,8 @@ class Profile {
   render() {
     const template = Handlebars.templates['profile.hbs'];
     this.parent.innerHTML = template({ user: userState, context: this.context });
+
+    var disabledHref = document.querySelector('.disabled-href');
   }
 }
 export default Profile;
