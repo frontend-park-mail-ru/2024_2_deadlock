@@ -43,25 +43,25 @@ function renderSettings() {
   header.render();
 }
 
-const config = {
-  feed: {
+export const routes = [
+  {
+    path: '/feed',
     render: renderFeed,
   },
-  reg: {
+  {
+    path: '/reg',
     render: renderReg,
   },
-  auth: {
+  {
+    path: '/auth',
     render: renderAuth,
   },
-  profile: {
+  {
+    profile: '/profile',
     render: renderProfile,
   },
-  settings: {
+  {
+    settings: '/settings',
     render: renderSettings,
   },
-};
-
-export default function Navigate(url) {
-  config[url].render();
-  window.history.pushState({}, '', url);
-}
+];
