@@ -1,6 +1,6 @@
-import Cards from './components/Cards/cards.js';
-import Forms from './components/Forms/forms.js';
-import Header from './components/Header/header.js';
+import Cards from '../components/Cards/cards.js';
+import Forms from '../components/Forms/forms.js';
+import Header from '../components/Header/header.js';
 
 const itemsContainer = document.querySelector('.items-container');
 const placeForHeader = document.querySelector('.place-for-header');
@@ -24,20 +24,17 @@ function renderFeed() {
   header.render();
 }
 
-const config = {
-  feed: {
+export const routes = [
+  {
+    path: '/feed',
     render: renderFeed,
   },
-  reg: {
+  {
+    path: '/reg',
     render: renderReg,
   },
-  auth: {
+  {
+    path: '/auth',
     render: renderAuth,
   },
-};
-
-export default function Navigate(url) {
-  placeForHeader.innerHTML = '';
-  config[url].render();
-  window.history.pushState({}, '', url);
-}
+];

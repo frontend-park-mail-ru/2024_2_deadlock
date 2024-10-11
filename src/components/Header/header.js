@@ -1,6 +1,7 @@
-import Navigate from '../../navigate.js';
-import userState from '../../user.js';
-import Ajax from '../../ajax.js';
+import Ajax from '../../ajax/ajax.js';
+import UserState from '../../user/user.js';
+import UserApi from '../../api/api_user.js';
+import Navigator from '../../router/navigator.js';
 
 export default class Header {
   constructor(parent) {
@@ -9,9 +10,9 @@ export default class Header {
 
   render() {
     const template = Handlebars.templates['header.hbs'];
-    this.parent.innerHTML = template({ user: userState });
+    this.parent.innerHTML = template({ user: UserState });
 
-    if (userState.isAuthorized) {
+    if (UserState.isAuthorized) {
       const logoutButton = document.querySelector('#logout-button');
       logoutButton.addEventListener('click', (event) => {
         event.preventDefault();
@@ -21,26 +22,17 @@ export default class Header {
       const enterButton = document.querySelector('#enter-button');
       enterButton.addEventListener('click', (event) => {
         event.preventDefault();
-        Navigate('auth');
+        Navigator.navigateTo('/auth');
       });
     }
   }
 
   async Logout() {
-    const response = await Ajax({
-      url: 'http://dead-vc.ru/api/v1/logout',
-      method: 'POST',
-    });
-
-    switch (response.status) {
-      case 200:
-        console.log('Logout successful', response.status, response.body);
-        userState.logout();
-        userState.removeEmail();
-        Navigate('feed');
-        break;
-      default:
-        console.error('Error', response.status, response.error);
+    const { isApiError, apiErrorText, responseStatus, responseError } = await UserApi.Logout();
+    if (isApiError) {
+      console.error(apiErrorText, responseStatus, responseError);
+    } else {
+      Navigator.navigateTo('/feed');
     }
   }
 }

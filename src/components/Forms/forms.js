@@ -1,6 +1,6 @@
-import Navigate from '../../navigate.js';
-import Ajax from '../../ajax.js';
-import userState from '../../user.js';
+import Navigator from '../../router/navigator.js';
+import Ajax from '../../ajax/ajax.js';
+import UserApi from '../../api/api_user.js';
 
 export default class Forms {
   constructor(parent) {
@@ -12,6 +12,9 @@ export default class Forms {
       isPasswordRepeatCorrect: true,
       isApiError: false,
       apiErrorText: '',
+      emailValue: '',
+      passwordValue: '',
+      passwordRepeatValue: '',
     };
   }
 
@@ -26,7 +29,8 @@ export default class Forms {
   }
 
   render() {
-    console.log('new form, isEmailCorrect: ', this.context);
+    const placeForHeader = document.querySelector('.place-for-header');
+    placeForHeader.innerHTML = '';
     const template = Handlebars.templates['forms.hbs'];
     this.parent.innerHTML = template({ context: this.context });
     const AuthForm = document.querySelector('.auth-form-inputs');
@@ -36,35 +40,35 @@ export default class Forms {
     const AuthHref = document.querySelector('#authhref');
     AuthHref.addEventListener('click', (event) => {
       event.preventDefault();
-      Navigate('auth');
+      Navigator.navigateTo('/auth');
     });
 
     const RegHref = document.querySelector('#reghref');
     RegHref.addEventListener('click', (event) => {
       event.preventDefault();
-      Navigate('reg');
+      Navigator.navigateTo('/reg');
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    const EmailInput = document.querySelector('#email-input');
-    const PasswordInput = document.querySelector('#password-input');
-    const EmailInputVal = EmailInput.value.trim();
-    const PasswordInputVal = PasswordInput.value.trim();
+    const EmailInputVal = document.querySelector('#email-input').value.trim();
+    const PasswordInputVal = document.querySelector('#password-input').value.trim();
+
+    this.context.emailValue = EmailInputVal;
+    this.context.passwordValue = PasswordInputVal;
 
     const emailValid = this.isValidEmail(EmailInputVal);
     const passwordValid = this.isValidPassword(PasswordInputVal);
 
-    this.context.isEmailCorrect = emailValid ? true : false;
-    this.context.isPasswordCorrect = passwordValid ? true : false;
+    this.context.isEmailCorrect = emailValid;
+    this.context.isPasswordCorrect = passwordValid;
 
-    console.log(EmailInputVal, PasswordInputVal);
-
+    const PasswordRepeatVal = '';
     if (this.context.isReg) {
-      const PasswordRepeat = document.querySelector('#password-input-repeat');
-      const PasswordRepeatVal = PasswordRepeat.value.trim();
+      const PasswordRepeatVal = document.querySelector('#password-input-repeat').value.trim();
+      this.context.passwordRepeatValue = PasswordRepeatVal;
       this.context.isPasswordRepeatCorrect = PasswordRepeatVal === PasswordInputVal;
     }
 
@@ -84,64 +88,32 @@ export default class Forms {
   }
 
   async Register({ password, email }) {
-    const response = await Ajax({
-      url: 'http://dead-vc.ru/api/v1/register',
-      method: 'POST',
-      body: {
-        password,
-        email,
-      },
+    const { isApiError, apiErrorText, responseStatus, responseError } = await UserApi.Register({
+      password,
+      email,
     });
-
-    switch (response.status) {
-      case 200:
-        this.context.isApiError = false;
-        userState.login();
-        userState.setEmail(email);
-        Navigate('feed');
-        break;
-      case 409:
-        console.error('User with this email already exists', response.status, response.error);
-        this.context.isApiError = true;
-        this.context.apiErrorText = 'Пользователь с этим именем существует';
-        this.render();
-        break;
-      default:
-        console.error('Error', response.status, response.error);
-        this.context.isApiError = true;
-        this.context.apiErrorText = 'Ошибка на стороне сервера';
-        this.render();
+    this.context.isApiError = isApiError;
+    this.context.apiErrorText = apiErrorText;
+    if (isApiError) {
+      console.error(apiErrorText, responseStatus, responseError);
+      this.render();
+    } else {
+      Navigator.navigateTo('/feed');
     }
   }
 
   async Login({ password, email }) {
-    const response = await Ajax({
-      url: 'http://dead-vc.ru/api/v1/login',
-      method: 'POST',
-      body: {
-        password,
-        email,
-      },
+    const { isApiError, apiErrorText, responseStatus, responseError } = await UserApi.Login({
+      password,
+      email,
     });
-
-    switch (response.status) {
-      case 200:
-        this.context.isApiError = false;
-        userState.login();
-        userState.setEmail(email);
-        Navigate('feed');
-        break;
-      case 404:
-        console.error('User not found', response.status, response.error);
-        this.context.isApiError = true;
-        this.context.apiErrorText = 'Неверный логин или пароль';
-        this.render();
-        break;
-      default:
-        this.context.isApiError = true;
-        this.context.apiErrorText = 'Ошибка на стороне сервера';
-        console.error('Error', response.status, response.error);
-        this.render();
+    this.context.isApiError = isApiError;
+    this.context.apiErrorText = apiErrorText;
+    if (isApiError) {
+      console.error(apiErrorText, responseStatus, responseError);
+      this.render();
+    } else {
+      Navigator.navigateTo('/feed');
     }
   }
 }
