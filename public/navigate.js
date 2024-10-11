@@ -2,7 +2,7 @@ import Cards from './components/Cards/cards.js';
 import Forms from './components/Forms/forms.js';
 import Header from './components/Header/header.js';
 import Profile from './components/Profile/profile.js';
-// import Settings from './components/Settings/settings.js';
+import Settings from './components/Settings/settings.js';
 
 const itemsContainer = document.querySelector('.items-container');
 const placeForHeader = document.querySelector('.place-for-header');
