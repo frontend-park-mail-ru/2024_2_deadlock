@@ -57,6 +57,7 @@ export const routes = [
     render: renderAuth,
   },
   {
+<<<<<<< HEAD
     path: '/profile',
     render: renderProfile,
   },
@@ -65,3 +66,13 @@ export const routes = [
     render: renderSettings,
   },
 ];
+=======
+    profile: '/profile',
+    render: renderProfile,
+  },
+  {
+    settings: '/settings',
+    render: renderSettings,
+  },
+];
+>>>>>>> 1d08ef7 (app fix: fixed history api)
