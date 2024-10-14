@@ -1,6 +1,5 @@
 'use strict';
-import Navigate from '../../navigate.js';
-import userState from '../../user.js';
+import userState from '../../user/user.js';
 var Profile = /** @class */ (function () {
   function Profile(parent) {
     this.parent = parent;

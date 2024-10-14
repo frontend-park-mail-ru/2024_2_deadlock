@@ -4,57 +4,87 @@
   </div>
   <div class="settings-body">
     <div class="settings-body__blog">
-      <div class="settings-body__blog__header">
+      <div class="settings-body__header">
         Блог
+        <div class="settings-body__header__subheader">
+          Название, описание
+        </div>
       </div>
-      <div class="settings-body__blog__body">
-        <form action="" method="post">
-          <label class="label-hint" for="name-input">Название</label>
-          {{#if context.isNameCorrect}}
+      <form action="" method="post">
+        <div class="settings-body__body">
+          <div class="form-frame">
+            <label class="" for="name-input">Название</label><br>
+            {{#if context.isNameCorrect}}
             <input class="input-correct" id="name-input" type="text" placeholder="Введите название">
-          {{else}}
-            <input class="input-error" id="name-input" type="text" placeholder="Введите название">
-            <label class="label-error" for="name-input">Некорректное название</label>
-          {{/if}}
-          <label class="label-hint" for="description-input">Описание</label>
+            {{else}}
+            <input class="input-error" id="name-input" type="text" placeholder="Введите название"><br>
+            <label class="" for="name-input">Некорректное название</label>
+            {{/if}}
+            <div class="input-counter">
+            </div>
+          </div>
+          <div class="form-frame block-right">
+          <label class="" for="description-input">Описание</label><br>
           {{#if context.isDescriptionCorrect}}
-            <textarea id="description-input" class="textarea-correct" placeholder="Пара слов о себе"></textarea>
+          <textarea id="description-input" class="textarea-correct" placeholder="Пара слов о себе"></textarea>
           {{else}}
-            <textarea name="" id="description-input" class="textarea-error" placeholder="Пара слов о себе"></textarea>
-            <label class="label-error" for="name-description">Некорректное описание</label>
+          <textarea name="" id="description-input" class="textarea-error" placeholder="Пара слов о себе"></textarea><br>
+          <label class="" for="name-description">Некорректное описание</label>
           {{/if}}
-        </form>
-      </div>
+          </div>
+        </div>
+        <a href="" class="link-confirm">Сохранить</a>
+      </form>
     </div>
     <div class="settings-body__feed">
-      <div class="settings-body__feed__header">
+      <div class="settings-body__header">
         Ленты
+        <div class="settings-body__header__subheader">
+          Настройки лент, Фильтрация, Заблокированные
+        </div>
       </div>
-      <div class="settings-body__feed__body">
+      <div class="settings-body__body">
         <form action="" method="post">
-          <label for="">Главная по умолчанию</label>
-          <select>
-            {{#with context}}
-              <option value="{{context}}"></option>
-            {{/with}}
-          </select>
+          <div class="feed-setting">
+            <label for="">Главная по умолчанию</label><br>
+            <select>
+              {{#with context}}
+                <option value="{{context}}"></option>
+              {{/with}}
+            </select>
+          </div>
+          <div class="feed-setting">
+            <label for="">Сортировка "Моей ленты"</label><br>
+            <select>
+              {{#with context}}
+                <option value="{{context}}"></option>
+              {{/with}}
+            </select>
+          </div>
         </form>
       </div>
     </div>
     <div class="settings-body__main">
-      <div class="settings-body__main__header">
+      <div class="settings-body__header">
         Основные
-      </div>
-      <div class="settings-body__main__body">
-        <div class="email-setting">
-          <label for="">Почта</label>
-          <span>{{user.email}}</span>
-          <a href="">Изменить</a>
+        <div class="settings-body__header__subheader">
+          Способы входа
         </div>
-        <div class="password-setting">
-          <label for="">Пароль</label>
-          <span>{{user.password.length}}</span>
-          <a href="">Изменить</a>
+      </div>
+      <div class="settings-body__body">
+        <div class="form-frame">
+          <label for="">Почта</label><br>
+          <span>{{user.email}}</span><br>
+          <a href="" class="link-confirm">Изменить</a>
+        </div>
+        <div class="form-frame">
+          <label for="">Пароль</label><br>
+          <span>
+            {{#with user.password.length}}
+            *
+            {{/with}}
+          </span><br>
+          <a href="" class="link-confirm">Изменить</a>
         </div>
       </div>
     </div>

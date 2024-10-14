@@ -1,4 +1,4 @@
-@import '/public/variables.css';
+@import '../../variables.css';
 
 .auth-form {
   margin-top: 50px;
