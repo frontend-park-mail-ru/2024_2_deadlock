@@ -1,12 +1,12 @@
 'use strict';
 // Object.defineProperty(exports, "__esModule", { value: true });
-import userState from '../../user.js';
-// var user_js_1 = require("../../user.js");
-var MAINPOPULAR = 'mainPopular';
-var MAINLATEST = 'mainLatest';
-var MAINOWN = 'mainOwn';
-var SORTBYPOPULARITY = 'sortByPopularity';
-var SORTBYDATE = 'sortByDate';
+import userState from '../../user/user.js';
+var MAIN_POPULAR = 'mainPopular';
+var MAIN_LATEST = 'mainLatest';
+var MAIN_OWN = 'mainOwn';
+var SORT_BY_POPULARITY = 'sortByPopularity';
+var SORT_BY_DATE = 'sortByDate';
+var MAX_NAME_LENGTH = 30;
 var Settings = /** @class */ (function () {
   function Settings(parent) {
     this.parent = parent;
@@ -14,13 +14,31 @@ var Settings = /** @class */ (function () {
       isNameCorrect: true,
       isDescriptionCorrect: true,
       description: '',
-      mainDefault: MAINPOPULAR,
-      sort: SORTBYPOPULARITY,
+      mainDefault: MAIN_POPULAR,
+      sort: SORT_BY_POPULARITY,
     };
   }
   Settings.prototype.render = function () {
     var template = Handlebars.templates['settings.hbs'];
     this.parent.innerHTML = template({ user: userState.default, context: this.context });
+    var inputCounter = document.querySelector('.input-counter');
+    var inputField = document.querySelector('#name-input');
+    var inputLength = inputField.value.length;
+    var countHandler = function () {
+      if (inputCounter && inputLength) {
+        var difference = MAX_NAME_LENGTH - inputLength;
+        inputCounter.textContent = difference.toString();
+      }
+    };
+    inputField === null || inputField === void 0
+      ? void 0
+      : inputField.addEventListener('click', function (event) {
+          alert('fyhtf');
+          countHandler();
+        });
+    document.addEventListener('DOMContentLoaded', function (event) {
+      countHandler();
+    });
   };
   return Settings;
 })();
