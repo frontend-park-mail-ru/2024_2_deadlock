@@ -1,5 +1,4 @@
-import Navigate from '../../navigate.js';
-import userState from '../../user.js';
+import userState from '../../user/user.js';
 
 interface Profile {
   parent: Element;

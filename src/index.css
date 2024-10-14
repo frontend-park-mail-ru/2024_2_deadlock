@@ -3,6 +3,7 @@
 @import './components/Header/header.css';
 @import './variables.css';
 @import './components/Profile/profile.css';
+@import './components/Settings/settings.css';
 
 body {
   margin: 0;

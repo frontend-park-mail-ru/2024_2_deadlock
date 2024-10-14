@@ -5,13 +5,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "./node_modules/.bin/tsc --project ./tsconfig.json --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
     "start": "DEBUG=* && node server/server.js",
     "compile:templates": "handlebars src/components/Cards/cards.hbs -f src/components/Cards/cards.precompiled.js",
     "compile:forms": "handlebars src/components/Forms/forms.hbs -f src/components/Forms/forms.precompiled.js",
     "compile:header": "handlebars src/components/Header/header.hbs -f src/components/Header/header.precompiled.js",
+    "compile:profile": "handlebars src/components/Profile/profile.hbs -f src/components/Profile/profile.precompiled.js",
+    "compile:settings": "handlebars src/components/Settings/settings.hbs -f src/components/Settings/settings.precompiled.js",
     "lint": "eslint . --fix && prettier --write .",
     "build": "webpack"
   },

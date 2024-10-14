@@ -29,7 +29,7 @@ export default class Header {
     const profileButton = document.querySelector('#profile-button');
     profileButton.addEventListener('click', (event) => {
       event.preventDefault();
-      Navigate('profile');
+      Navigator.navigateTo('/profile');
     });
   }
 
