@@ -1,0 +1,67 @@
+@import '/public/variables.css';
+
+.fields {
+  background-color: var(--main-color);
+}
+
+.field {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  max-width: 100%;
+}
+
+.div-input {
+  width: 80%;
+  overflow-wrap: break-word;
+  outline: none;
+  box-sizing: border-box;
+  padding-left: 0;
+}
+
+.div-input li {
+  margin-left: 15px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  min-width: 150px;
+  display: none;
+  background-color: #f1f1f1;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown button {
+  opacity: 0;
+}
+
+.field:hover .dropdown button {
+  opacity: 1;
+}
+
+.header-text {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.regular-text {
+  font-size: 16px;
+  font-weight: 100;
+}

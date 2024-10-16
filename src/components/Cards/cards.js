@@ -6,6 +6,7 @@ export default class Cards {
   }
 
   async render() {
+    this.parent.innerHTML = '';
     const template = Handlebars.templates['cards.hbs'];
     this.items = await ArticleApi.getArticles();
     this.parent.innerHTML = template({ items: this.items });

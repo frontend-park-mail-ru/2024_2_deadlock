@@ -6,11 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
-    "prestart": "npm run compile:templates && npm run compile:forms && npm run compile:header",
+    "prestart": "npm run compile:templates && npm run compile:forms && npm run compile:header && npm run compile:fields",
     "start": "DEBUG=* && node server/server.js",
     "compile:templates": "handlebars src/components/Cards/cards.hbs -f src/components/Cards/cards.precompiled.js",
     "compile:forms": "handlebars src/components/Forms/forms.hbs -f src/components/Forms/forms.precompiled.js",
     "compile:header": "handlebars src/components/Header/header.hbs -f src/components/Header/header.precompiled.js",
+    "compile:fields": "npm run compile:allfields && npm run compile:textfield && npm run compile:listfield",
+    "compile:allfields": "handlebars src/components/Fields/fields.hbs -f src/components/Fields/fields.precompiled.js",
+    "compile:textfield": "handlebars src/components/Fields/TextField/textfield.hbs -f src/components/Fields/TextField/textfield.precompiled.js",
+    "compile:listfield": "handlebars src/components/Fields/ListField/listfield.hbs -f src/components/Fields/ListField/listfield.precompiled.js",
     "lint": "eslint . --fix && prettier --write .",
     "build": "webpack"
   },

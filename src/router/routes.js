@@ -1,4 +1,5 @@
 import Cards from '../components/Cards/cards.js';
+import Fields from '../components/Fields/fields.js';
 import Forms from '../components/Forms/forms.js';
 import Header from '../components/Header/header.js';
 
@@ -24,6 +25,13 @@ function renderFeed() {
   header.render();
 }
 
+function renderRedactor() {
+  const header = new Header(placeForHeader);
+  const fields = new Fields(itemsContainer);
+  fields.render();
+  header.render();
+}
+
 export const routes = [
   {
     path: '/feed',
@@ -36,5 +44,9 @@ export const routes = [
   {
     path: '/auth',
     render: renderAuth,
+  },
+  {
+    path: '/redactor',
+    render: renderRedactor,
   },
 ];

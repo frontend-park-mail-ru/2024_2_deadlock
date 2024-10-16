@@ -1,0 +1,16 @@
+
+<div class="field" data-id="{{element.id}}">
+    <div class="dropdown">
+        <button>+</button>
+        <div class="dropdown-content">
+            <a class="up-href" data-id="{{element.id}}">Вверх</a>
+            <a class="down-href" data-id="{{element.id}}">Вниз</a>
+            <a class="delete-href" data-id="{{element.id}}">Удалить</a>
+            <a class="make-header-href">Сделать заголовком{{element.id}}</a>
+            <a class="make-text-href">Сделать текстом</a>
+        </div>
+    </div>
+    <div class="div-input {{element.textStyle}}" data-id="{{element.id}}" contenteditable="true" data-gramm="false">
+        Поле{{element.id}}
+    </div>
+</div>
