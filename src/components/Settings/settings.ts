@@ -1,4 +1,5 @@
 'use strict';
+import Handlebars from 'handlebars';
 import userState from '../../user/user.js';
 
 const MAIN_POPULAR: string = 'mainPopular';
@@ -8,18 +9,7 @@ const SORT_BY_POPULARITY: string = 'sortByPopularity';
 const SORT_BY_DATE: string = 'sortByDate';
 const MAX_NAME_LENGTH: number = 30;
 
-interface SettingsInterface {
-  parent: Element;
-  context: {
-    mainDefault: string;
-    sort: string;
-    description: string;
-    isNameCorrect: boolean;
-    isDescriptionCorrect: boolean;
-  };
-}
-
-class Settings implements SettingsInterface {
+class Settings {
   parent: Element;
   context: {
     mainDefault: string;
@@ -45,7 +35,7 @@ class Settings implements SettingsInterface {
     const inputCounter = document.querySelector('.input-counter');
     const inputField = <HTMLInputElement>document.querySelector('#name-input');
     const inputLength: number = inputField.value.length;
-
+    alert();
     const countHandler = () => {
       if (inputCounter && inputLength) {
         var difference: number = MAX_NAME_LENGTH - inputLength;
