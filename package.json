@@ -2,16 +2,21 @@
   "name": "dead-vc-frontend",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky && husky install",
-    "prestart": "npm run compile:templates && npm run compile:forms && npm run compile:header",
-    "start": "DEBUG=* && node ./server/server.js",
-    "compile:templates": "handlebars public/components/Cards/cards.hbs -f public/components/Cards/cards.precompiled.js",
-    "compile:forms": "handlebars public/components/Forms/forms.hbs -f public/components/Forms/forms.precompiled.js",
-    "compile:header": "handlebars public/components/Header/header.hbs -f public/components/Header/header.precompiled.js",
-    "lint": "eslint . --fix && prettier --write ."
+    "prestart": "npm run compile:templates && npm run compile:forms && npm run compile:header && npm run compile:fields",
+    "start": "DEBUG=* && node server/server.js",
+    "compile:templates": "handlebars src/components/Cards/cards.hbs -f src/components/Cards/cards.precompiled.js",
+    "compile:forms": "handlebars src/components/Forms/forms.hbs -f src/components/Forms/forms.precompiled.js",
+    "compile:header": "handlebars src/components/Header/header.hbs -f src/components/Header/header.precompiled.js",
+    "compile:fields": "npm run compile:allfields && npm run compile:textfield && npm run compile:listfield",
+    "compile:allfields": "handlebars src/components/Fields/fields.hbs -f src/components/Fields/fields.precompiled.js",
+    "compile:textfield": "handlebars src/components/Fields/TextField/textfield.hbs -f src/components/Fields/TextField/textfield.precompiled.js",
+    "compile:listfield": "handlebars src/components/Fields/ListField/listfield.hbs -f src/components/Fields/ListField/listfield.precompiled.js",
+    "lint": "eslint . --fix && prettier --write .",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +26,9 @@
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "prettier": "3.3.3"
+    "prettier": "3.3.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,html,css,scss,md}": [

@@ -22,26 +22,26 @@
     <form class="auth-form-inputs" action="" method="post">
         <label class="label-hint" for="email-input">Email</label>
         {{#if context.isEmailCorrect}}
-            <input class="input-correct" id="email-input" type="email" placeholder="Введите Email">
+            <input class="input-correct" id="email-input" type="email" placeholder="Введите Email" value="{{context.emailValue}}">
         {{else}}
-            <input class="input-error" id="email-input" type="email" placeholder="Введите Email">
+            <input class="input-error" id="email-input" type="email" placeholder="Введите Email" value="{{context.emailValue}}">
             <label class="label-error" for="email-input">Ошибочный Email</label>
         {{/if}}
 
         <label class="label-hint" for="password-input">Пароль</label>
         {{#if context.isPasswordCorrect}}
-            <input class="input-correct" id="password-input" type="password" placeholder="Введите пароль">
+            <input class="input-correct" id="password-input" type="password" placeholder="Введите пароль" value="{{context.passwordValue}}">
         {{else}}
-            <input class="input-error" id="password-input" type="password" placeholder="Введите пароль">
+            <input class="input-error" id="password-input" type="password" placeholder="Введите пароль" value="{{context.passwordValue}}">
             <label class="label-error" for="password-input">Ошибочный пароль</label>
         {{/if}}
 
         {{#if context.isReg}}
         <label class="label-hint" for="password-input-repeat">Подтверждение пароля</label>
             {{#if context.isPasswordRepeatCorrect}}
-                <input class="input-correct" id="password-input-repeat" type="password" placeholder="Повторите пароль">
+                <input class="input-correct" id="password-input-repeat" type="password" placeholder="Повторите пароль" value="{{context.passwordRepeatValue}}">
             {{else}}
-                <input class="input-error" id="password-input-repeat" type="password" placeholder="Повторите пароль">
+                <input class="input-error" id="password-input-repeat" type="password" placeholder="Повторите пароль" value="{{context.passwordRepeatValue}}">
                 <label class="label-error" for="password-input-repeat">Пароли не совпадают</label>
             {{/if}}
         {{/if}}

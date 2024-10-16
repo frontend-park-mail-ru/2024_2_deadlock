@@ -2,6 +2,7 @@
 @import './components/Forms/forms.css';
 @import './components/Header/header.css';
 @import './variables.css';
+@import './components/Fields/fields.css';
 
 body {
   margin: 0;
@@ -26,3 +27,24 @@ body {
   width: 100%;
   max-width: var(--main-content-feed-max-width);
 }
+
+.container {
+  margin: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-left: var(--main-content-feed-margin-left);
+  margin-right: var(--main-content-feed-margin-right);
+  padding: var(--space-xs);
+  width: 100%;
+  max-width: var(--main-content-feed-max-width);
+  background-color: var(--main-color);
+}
+
+/* .item:hover::before{
+  content: "+";
+  border: 1px solid black;
+  padding: 2px;
+  margin-right: 2px;
+  margin-top: 10px;
+} */
