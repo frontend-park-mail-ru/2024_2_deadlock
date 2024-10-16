@@ -35,7 +35,8 @@ class Settings {
     const inputCounter = document.querySelector('.input-counter');
     const inputField = <HTMLInputElement>document.querySelector('#name-input');
     const inputLength: number = inputField.value.length;
-    alert();
+    console.log(inputField);
+    console.log(inputLength);
     const countHandler = () => {
       if (inputCounter && inputLength) {
         var difference: number = MAX_NAME_LENGTH - inputLength;
@@ -44,7 +45,6 @@ class Settings {
     };
 
     inputField?.addEventListener('click', (event) => {
-      alert('fyhtf');
       countHandler();
     });
 
