@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import userState from '../../user/user.js';
 
 interface Profile {
@@ -18,7 +19,6 @@ class Profile {
   render() {
     const template = Handlebars.templates['profile.hbs'];
     this.parent.innerHTML = template({ user: userState, context: this.context });
-
     var disabledHref = document.querySelector('.disabled-href');
   }
 }

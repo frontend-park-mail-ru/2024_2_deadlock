@@ -1,6 +1,7 @@
 'use strict';
 // Object.defineProperty(exports, "__esModule", { value: true });
-import userState from '../../user/user.js';
+var handlebars_js_1 = require('handlebars/dist/handlebars.js');
+var user_js_1 = require('../../user/user.js');
 var MAIN_POPULAR = 'mainPopular';
 var MAIN_LATEST = 'mainLatest';
 var MAIN_OWN = 'mainOwn';
@@ -19,11 +20,13 @@ var Settings = /** @class */ (function () {
     };
   }
   Settings.prototype.render = function () {
-    var template = Handlebars.templates['settings.hbs'];
-    this.parent.innerHTML = template({ user: userState.default, context: this.context });
+    var template = handlebars_js_1.default.templates['settings.hbs'];
+    this.parent.innerHTML = template({ user: user_js_1.default, context: this.context });
     var inputCounter = document.querySelector('.input-counter');
     var inputField = document.querySelector('#name-input');
     var inputLength = inputField.value.length;
+    console.log(inputField);
+    console.log(inputLength);
     var countHandler = function () {
       if (inputCounter && inputLength) {
         var difference = MAX_NAME_LENGTH - inputLength;
@@ -33,7 +36,6 @@ var Settings = /** @class */ (function () {
     inputField === null || inputField === void 0
       ? void 0
       : inputField.addEventListener('click', function (event) {
-          alert('fyhtf');
           countHandler();
         });
     document.addEventListener('DOMContentLoaded', function (event) {
