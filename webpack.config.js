@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
+  mode: 'development',
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -12,7 +13,7 @@ module.exports = {
         use: ['babel-loader', 'ts-loader'],
       },
       {
-        test: /\.js?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
@@ -28,6 +29,15 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  devServer: {
+    port: 3000,
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+    },
+    compress: true,
+    historyApiFallback: true,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
