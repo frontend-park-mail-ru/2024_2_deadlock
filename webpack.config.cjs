@@ -21,10 +21,14 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/i,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+      },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js', '.css', '.scss', '.sass'],
+    extensions: ['.ts', '.js', '.css', '.scss', '.sass', '.hbs'],
   },
   output: {
     filename: 'bundle.js',
