@@ -31,5 +31,8 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install modules
+        run: npm ci
+
       - name: Lint code
         run: npx eslint .
