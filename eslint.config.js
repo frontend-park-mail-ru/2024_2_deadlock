@@ -1,19 +1,21 @@
-const prettier = require('eslint-plugin-prettier');
+import prettier from 'eslint-plugin-prettier';
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-module.exports = [
+export default tseslint.config(
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
-    languageOptions: {
-      ecmaVersion: 2021,
-      sourceType: 'module',
-    },
+    ignores: ['node_modules/*', 'dist/*', '.babelrc.cjs', 'webpack.config.cjs'],
+  },
+  {
+    files: ['**/*.{ts,js}'],
     plugins: {
       prettier,
     },
     rules: {
       'prettier/prettier': 'error',
-      semi: ['warn', 'always'],
     },
-    ignores: ['node_modules/*', 'dist/*'],
   },
-];
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.stylistic,
+);
