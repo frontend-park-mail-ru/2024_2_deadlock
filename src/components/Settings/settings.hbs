@@ -80,9 +80,9 @@
         <div class="form-frame">
           <label for="">Пароль</label><br>
           <span>
-            {{#with user.password.length}}
+            {{#each (split user.password)}}
             *
-            {{/with}}
+            {{/each}}
           </span><br>
           <a href="" class="link-confirm">Изменить</a>
         </div>

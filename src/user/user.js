@@ -1,7 +1,7 @@
-// import userState from "./user";
-
-class UserState {
-  constructor() {
+'use strict';
+// Object.defineProperty(exports, "__esModule", { value: true });
+var UserState = /** @class */ (function () {
+  function UserState() {
     this.isAuthorized = false;
     this.email = '';
     this.name = '';
@@ -11,64 +11,57 @@ class UserState {
     this.subcribers = 0;
     this.subscriptions = 0;
     this.header = '';
-    this.update();
   }
-
-  login(email) {
+  UserState.prototype.login = function () {
     this.isAuthorized = true;
-    this.email = email;
-    localStorage.setItem('isAuthorized', JSON.stringify(this.isAuthorized));
-    localStorage.setItem('email', this.email);
-  }
-
-  logout() {
+  };
+  UserState.prototype.logout = function () {
     this.isAuthorized = false;
-    localStorage.removeItem('isAuthorized');
-    localStorage.removeItem('email');
-  }
-
-  update() {
-    this.isAuthorized = JSON.parse(localStorage.getItem('isAuthorized'));
-    if (this.isAuthorized) {
-      this.email = localStorage.getItem('email');
-    }
-  }
-
-  setEmail(email) {
+  };
+  UserState.prototype.setEmail = function (email) {
     this.email = email;
-  }
-
-  setName(name) {
+  };
+  UserState.prototype.removeEmail = function () {
+    this.email = '';
+  };
+  UserState.prototype.setName = function (name) {
     this.name = name;
-  }
-
-  setPassword(password) {
+  };
+  UserState.prototype.removeName = function () {
+    this.name = '';
+  };
+  UserState.prototype.setPassword = function (password) {
     this.password = password;
-  }
-
-  setAvatar(path) {
+  };
+  UserState.prototype.removePassword = function () {
+    this.password = '';
+  };
+  UserState.prototype.setAvatar = function (path) {
     this.avatar = path;
-  }
-
-  setHeader(path) {
+  };
+  UserState.prototype.setHeader = function (path) {
     this.header = path;
-  }
-
-  setRegistrationDate(date) {
+  };
+  UserState.prototype.removeAvatar = function () {
+    this.avatar = '';
+  };
+  UserState.prototype.setRegistrationDate = function (date) {
     this.registrationDate = date;
-  }
-
-  setSubscribers(subcribers) {
+  };
+  UserState.prototype.removeDate = function () {
+    this.registrationDate = '';
+  };
+  UserState.prototype.setSubscribers = function (subcribers) {
     this.subcribers = subcribers;
-  }
-
-  setSubscriptions(subscriptions) {
+  };
+  UserState.prototype.setSubscriptions = function (subscriptions) {
     this.subscriptions = subscriptions;
-  }
-}
-
-let userState = new UserState();
-userState.setEmail('email@email.com');
+  };
+  return UserState;
+})();
+var userState = new UserState();
+userState.setName('MyUser');
+userState.setEmail('username@email.com');
 userState.setPassword('MyPassword');
 userState.setRegistrationDate('10.10.2024');
 userState.setAvatar('../../images/leonardo.osnova.png');

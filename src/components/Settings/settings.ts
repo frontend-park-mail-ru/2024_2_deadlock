@@ -1,7 +1,7 @@
 'use strict';
-import Handlebars from 'handlebars';
-import userState from '../../user/user.js';
 
+import userState from '../../user/user.js';
+import Handlebars from 'handlebars';
 const MAIN_POPULAR: string = 'mainPopular';
 const MAIN_LATEST: string = 'mainLatest';
 const MAIN_OWN: string = 'mainOwn';
@@ -50,6 +50,10 @@ class Settings {
 
     document.addEventListener('DOMContentLoaded', (event) => {
       countHandler();
+    });
+
+    Handlebars.registerHelper('split', (str) => {
+      return str.split('');
     });
   }
 }
