@@ -4,9 +4,5 @@
 # Node JS
 node_modules/
 
-public/images
-*precompiled.js
-
-
-public/closedEye.png
-public/openedEye.png
+# Build
+dist/
