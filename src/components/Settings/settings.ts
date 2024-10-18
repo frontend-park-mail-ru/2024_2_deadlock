@@ -34,6 +34,7 @@ class Settings {
     this.parent.innerHTML = template({ user: userState, context: this.context });
     const inputCounter = document.querySelector('.input-counter');
     const inputField = <HTMLInputElement>document.querySelector('#name-input');
+    inputField.value = userState.name.length.toString();
     const inputLength: number = inputField.value.length;
     console.log(inputField);
     console.log(inputLength);
@@ -54,6 +55,14 @@ class Settings {
 
     Handlebars.registerHelper('split', (str) => {
       return str.split('');
+    });
+
+    const linkConfirm = document.querySelector('.link-confirm[name=name-description-save]');
+    const form = <HTMLFormElement>document.querySelector('#name-description-form');
+    console.log(linkConfirm);
+    linkConfirm?.addEventListener('click', (event) => {
+      event.preventDefault();
+      form.submit();
     });
   }
 }

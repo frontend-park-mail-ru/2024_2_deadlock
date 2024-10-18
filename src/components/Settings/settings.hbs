@@ -10,7 +10,7 @@
           Название, описание
         </div>
       </div>
-      <form action="" method="post">
+      <form action="" method="post" id="name-description-form">
         <div class="settings-body__body">
           <div class="form-frame">
             <label class="" for="name-input">Название</label><br>
@@ -24,16 +24,16 @@
             </div>
           </div>
           <div class="form-frame block-right">
-          <label class="" for="description-input">Описание</label><br>
-          {{#if context.isDescriptionCorrect}}
-          <textarea id="description-input" class="textarea-correct" placeholder="Пара слов о себе"></textarea>
-          {{else}}
-          <textarea name="" id="description-input" class="textarea-error" placeholder="Пара слов о себе"></textarea><br>
-          <label class="" for="name-description">Некорректное описание</label>
-          {{/if}}
+            <label class="" for="description-input">Описание</label><br>
+            {{#if context.isDescriptionCorrect}}
+            <textarea id="description-input" class="textarea-correct" placeholder="Пара слов о себе"></textarea>
+            {{else}}
+            <textarea name="" id="description-input" class="textarea-error" placeholder="Пара слов о себе"></textarea><br>
+            <label class="" for="name-description">Некорректное описание</label>
+            {{/if}}
           </div>
         </div>
-        <a href="" class="link-confirm">Сохранить</a>
+        <a href="" class="link-confirm" name="name-description-save">Сохранить</a>
       </form>
     </div>
     <div class="settings-body__feed">
