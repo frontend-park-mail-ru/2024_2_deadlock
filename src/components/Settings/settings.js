@@ -1,13 +1,20 @@
 'use strict';
 // Object.defineProperty(exports, "__esModule", { value: true });
-var handlebars_js_1 = require('handlebars/dist/handlebars.js');
-var user_js_1 = require('../../user/user.js');
+// var user_js_1 = require("../../user/user.js");
+import userState from '../../user/user.js';
+// var Handlebars = require("handlebars");
+// import Handlebars from "../../../node_modules/handlebars/types/types.d.ts";
 var MAIN_POPULAR = 'mainPopular';
 var MAIN_LATEST = 'mainLatest';
 var MAIN_OWN = 'mainOwn';
 var SORT_BY_POPULARITY = 'sortByPopularity';
 var SORT_BY_DATE = 'sortByDate';
 var MAX_NAME_LENGTH = 30;
+
+Handlebars.registerHelper('split', function (str) {
+  return str.split('');
+});
+
 var Settings = /** @class */ (function () {
   function Settings(parent) {
     this.parent = parent;
@@ -20,8 +27,8 @@ var Settings = /** @class */ (function () {
     };
   }
   Settings.prototype.render = function () {
-    var template = handlebars_js_1.default.templates['settings.hbs'];
-    this.parent.innerHTML = template({ user: user_js_1.default, context: this.context });
+    var template = Handlebars.templates['settings.hbs'];
+    this.parent.innerHTML = template({ user: userState, context: this.context });
     var inputCounter = document.querySelector('.input-counter');
     var inputField = document.querySelector('#name-input');
     var inputLength = inputField.value.length;

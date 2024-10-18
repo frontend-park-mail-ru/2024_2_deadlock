@@ -1,4 +1,4 @@
-interface UserState {
+class UserState {
   isAuthorized: boolean;
   email: string;
   name: string;
@@ -8,9 +8,6 @@ interface UserState {
   subcribers: number;
   subscriptions: number;
   header: string;
-}
-
-class UserState {
   constructor() {
     this.isAuthorized = false;
     this.email = '';
