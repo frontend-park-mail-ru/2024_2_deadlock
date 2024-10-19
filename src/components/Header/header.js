@@ -1,8 +1,9 @@
 // import Ajax from '../../ajax/ajax.js';
-import UserState from '../../user/user.ts';
 import UserApi from '../../api/api_user.js';
 import Navigator from '../../router/navigator.js';
-import Handlebars from 'handlebars';
+import UserState from '../../user/user.ts';
+
+import template from './header.hbs';
 
 export default class Header {
   constructor(parent) {
@@ -10,7 +11,6 @@ export default class Header {
   }
 
   render() {
-    const template = Handlebars.templates['header.hbs'];
     this.parent.innerHTML = template({ user: UserState });
 
     if (UserState.isAuthorized) {
