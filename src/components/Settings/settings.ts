@@ -1,7 +1,7 @@
 'use strict';
 
-import userState from '../../user/user.ts';
 import Handlebars from 'handlebars';
+import userState from '../../user/user';
 const MAIN_POPULAR = 'mainPopular';
 // const MAIN_LATEST: string = 'mainLatest';
 // const MAIN_OWN: string = 'mainOwn';
