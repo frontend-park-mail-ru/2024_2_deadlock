@@ -1,4 +1,4 @@
-import UserState from '../user/user.js';
+import UserState from '../user/user.ts';
 import Ajax from '../ajax/ajax.js';
 import { ApiPaths } from './api_config.js';
 
