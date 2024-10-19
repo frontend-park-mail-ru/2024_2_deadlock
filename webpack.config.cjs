@@ -1,23 +1,42 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-function defaultCssLoader(modules = false, url = true) {
-  return ['style-loader', 'css-loader', 'postcss-loader'];
-}
-
 function getCssRules() {
   return [
     // RAW СSS
     {
-      test: /\.сss$/i,
+      test: /\.css$/i,
       exclude: /\.module\.сss$/i,
-      use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: false,
+            sourceMap: true,
+          },
+        },
+        'postcss-loader',
+        'sass-loader',
+      ],
     },
     // СSS MODULES
-    // {
-    //   test: /\.module\.сss$/i,
-    //   use: [...defaultCssLoader(true)],
-    // },
+    {
+      test: /\.module\.сss$/i,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true,
+          },
+        },
+        ,
+        'postcss-loader',
+        'sass-loader',
+      ],
+    },
   ];
 }
 
@@ -38,10 +57,14 @@ module.exports = {
         use: 'babel-loader',
       },
       // {
-      //   test: /\.(sa|sc|c)ss$/i,
+      //   test: /\.css$/i,
       //   use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       // },
       ...getCssRules(),
+      // {
+      //   test: /\.сss$/i,
+      //   use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      // },
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
