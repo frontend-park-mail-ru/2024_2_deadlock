@@ -1,6 +1,26 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+function defaultCssLoader(modules = false, url = true) {
+  return ['style-loader', 'css-loader', 'postcss-loader'];
+}
+
+function getCssRules() {
+  return [
+    // RAW СSS
+    {
+      test: /\.сss$/i,
+      exclude: /\.module\.сss$/i,
+      use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+    },
+    // СSS MODULES
+    // {
+    //   test: /\.module\.сss$/i,
+    //   use: [...defaultCssLoader(true)],
+    // },
+  ];
+}
+
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.ts'),
   mode: 'development',
@@ -17,10 +37,11 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
-      {
-        test: /\.(sa|sc|c)ss$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-      },
+      // {
+      //   test: /\.(sa|sc|c)ss$/i,
+      //   use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      // },
+      ...getCssRules(),
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
@@ -45,6 +66,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'index.html'),
       title: 'DEAD-VC.RU',
     }),
   ],

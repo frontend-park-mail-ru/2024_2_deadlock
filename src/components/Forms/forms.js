@@ -1,6 +1,7 @@
 import Navigator from '../../router/navigator.js';
 import Ajax from '../../ajax/ajax.js';
 import UserApi from '../../api/api_user.js';
+import FormsTemplate from '../Forms/forms.hbs';
 
 export default class Forms {
   constructor(parent) {
@@ -31,8 +32,8 @@ export default class Forms {
   render() {
     const placeForHeader = document.querySelector('.place-for-header');
     placeForHeader.innerHTML = '';
-    const template = Handlebars.templates['forms.hbs'];
-    this.parent.innerHTML = template({ context: this.context });
+    // const template = Handlebars.templates['forms.hbs'];
+    this.parent.innerHTML = FormsTemplate({ context: this.context });
     const AuthForm = document.querySelector('.auth-form-inputs');
 
     AuthForm.addEventListener('submit', this.handleSubmit.bind(this));

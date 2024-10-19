@@ -1,5 +1,3 @@
-@import '/public/variables.css';
-
 .header {
   display: flex;
   flex-direction: column;
