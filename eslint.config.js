@@ -1,6 +1,7 @@
 import prettier from 'eslint-plugin-prettier';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import globals from 'globals';
 
 export default tseslint.config(
   {
@@ -13,6 +14,14 @@ export default tseslint.config(
     },
     rules: {
       'prettier/prettier': 'error',
+    },
+  },
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
     },
   },
   eslint.configs.recommended,

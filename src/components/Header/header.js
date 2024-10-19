@@ -1,7 +1,8 @@
-import Ajax from '../../ajax/ajax.js';
-import UserState from '../../user/user.js';
+// import Ajax from '../../ajax/ajax.js';
+import UserState from '../../user/user.ts';
 import UserApi from '../../api/api_user.js';
 import Navigator from '../../router/navigator.js';
+import Handlebars from 'handlebars';
 
 export default class Header {
   constructor(parent) {
