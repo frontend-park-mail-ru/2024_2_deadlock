@@ -2,6 +2,7 @@
 
 import Handlebars from 'handlebars';
 import userState from '../../user/user';
+import templates from './settings.hbs';
 const MAIN_POPULAR = 'mainPopular';
 // const MAIN_LATEST: string = 'mainLatest';
 // const MAIN_OWN: string = 'mainOwn';
@@ -30,7 +31,7 @@ class Settings {
   }
 
   render() {
-    const template = Handlebars.templates['settings.hbs'];
+    const template = templates({});
     this.parent.innerHTML = template({ user: userState, context: this.context });
     const inputCounter = document.querySelector('.input-counter');
     const inputField = document.querySelector('#name-input') as HTMLInputElement;

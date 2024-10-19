@@ -1,4 +1,5 @@
 import ArticleApi from '../../api/api_articles.js';
+import templates from './cards.hbs';
 
 export default class Cards {
   constructor(parent) {
