@@ -1,4 +1,4 @@
-@import '/public/variables.css';
+@import '/src/variables.css';
 
 .card {
   background-color: var(--main-color);

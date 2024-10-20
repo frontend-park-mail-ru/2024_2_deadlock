@@ -1,8 +1,4 @@
-export const elements = {
-  IMAGE: 'img',
-  LIST: 'list',
-  TEXT: 'text',
-};
+export enum FieldType {TEXT, IMAGE}
 
 export const textStyles = {
   REGULAR: 'regular-text',

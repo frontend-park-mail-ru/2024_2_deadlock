@@ -1,30 +1,35 @@
 import TextField from './TextField/textfield.js';
 import ListField from './ListField/listfield.js';
-import { elements, textStyles } from './fieldconstants.js';
+import Handlebars from 'handlebars';
+import FieldsTemplate from './fields.hbs';
+import CheckField from './CheckField/checkfield.ts';
+import ImageField from './ImageField/imagefield.ts';
+import { FieldType, textStyles } from './fieldconstants.ts';
+import './fields.css';
 
 const fieldsData = [
   {
-    element: elements.TEXT,
+    element: FieldType.TEXT,
     textStyle: textStyles.REGULAR,
     id: 1,
     prevID: undefined,
     nextID: 2,
   },
   {
-    element: elements.LIST,
+    element: FieldType.LIST,
     id: 2,
     prevID: 1,
     nextID: 3,
   },
   {
-    element: elements.TEXT,
+    element: FieldType.TEXT,
     textStyle: textStyles.REGULAR,
     id: 3,
     prevID: 2,
     nextID: 4,
   },
   {
-    element: elements.TEXT,
+    element: FieldType.TEXT,
     textStyle: textStyles.REGULAR,
     id: 4,
     prevID: 3,
@@ -41,30 +46,17 @@ export default class Fields {
     this.swapWithNextFunc = this.swapWithNextFunc.bind(this);
     this.insertByEnterFunc = this.insertByEnterFunc.bind(this);
     this.deleteFieldFunc = this.deleteFieldFunc.bind(this);
+    this.chooseFieldFunc = this.chooseFieldFunc.bind(this);
   }
 
   render() {
-    const template = Handlebars.templates['fields.hbs'];
-    this.parent.innerHTML = template({});
+    this.parent.innerHTML = FieldsTemplate({});
     this.fieldContainer = this.parent.querySelector('.fields');
     this.fieldContainer.addEventListener('keydown', this.insertByEnterFunc);
 
     let prevField = undefined;
-    fieldsData.forEach((fieldData) => {
-      let curField = undefined;
-      switch (fieldData.element) {
-        case elements.TEXT:
-          curField = new TextField(this.fieldContainer, this.fields.length + 1, textStyles.REGULAR);
-          break;
-        case elements.LIST:
-          curField = new ListField(this.fieldContainer, this.fields.length + 1);
-          break;
-      }
-      this.insertField(curField, prevField, undefined);
-      prevField = curField;
-    });
-
-    console.log(this.fields);
+    let curField = new ImageField(this.fieldContainer, this.fields.length + 1, textStyles.REGULAR);
+    this.insertField(curField, prevField, undefined);
   }
 
   swapWithPrevFunc(event) {
@@ -83,7 +75,6 @@ export default class Fields {
 
   deleteFieldFunc(event) {
     const eventId = Number(event.target.dataset.id);
-    console.log(eventId);
     const curField = this.fields.find((field) => field.id === eventId);
     const nextField = this.fields.find((field) => field.id === curField.nextID);
     const prevField = this.fields.find((field) => field.id === curField.prevID);
@@ -96,7 +87,7 @@ export default class Fields {
       const eventId = Number(event.target.dataset.id);
       const curField = this.fields.find((field) => field.id === eventId);
       const nextField = this.fields.find((field) => field.id === curField.nextID);
-      const newField = new TextField(
+      const newField = new CheckField(
         this.fieldContainer,
         this.fields.length + 1,
         textStyles.REGULAR,
@@ -105,6 +96,24 @@ export default class Fields {
       const newFieldInput = newField.node.querySelector('.div-input');
       newFieldInput.focus();
     }
+  }
+
+  chooseFieldFunc(event) {
+    const eventId = Number(event.target.dataset.id);
+    const curField = this.fields.find((field) => field.id === eventId);
+    const nextField = this.fields.find((field) => field.id === curField.nextID);
+    const prevField = this.fields.find((field) => field.id === curField.prevID);
+    const newFieldType = event.target.dataset.newFieldType;
+
+    let newField = undefined;
+    if (newFieldType === 'text') {
+      newField = new TextField(this.fieldContainer, curField.id, textStyles.REGULAR);
+    } else if (newFieldType === 'image') {
+      newField = new TextField(this.fieldContainer, curField.id, textStyles.REGULAR);
+    }
+
+    this.deleteField(curField, prevField, nextField);
+    this.insertField(newField, prevField, nextField);
   }
 
   swap(firstField, secondField) {
@@ -135,6 +144,7 @@ export default class Fields {
   }
 
   insertField(curField, prevField = undefined, nextField = undefined) {
+    console.log(curField, prevField, nextField);
     curField.prevID = prevField ? prevField.id : undefined;
     curField.nextID = nextField ? nextField.id : undefined;
     this.fields.push(curField);
@@ -151,15 +161,35 @@ export default class Fields {
     const down_button = curField.node.querySelector('.down-href');
     const delete_button = curField.node.querySelector('.delete-href');
 
-    up_button.addEventListener('click', this.swapWithPrevFunc);
-    down_button.addEventListener('click', this.swapWithNextFunc);
-    delete_button.addEventListener('click', this.deleteFieldFunc);
+    if (up_button) {
+      up_button.addEventListener('click', this.swapWithPrevFunc);
+    }
+    if (down_button) {
+      down_button.addEventListener('click', this.swapWithNextFunc);
+    }
+    if (delete_button) {
+      delete_button.addEventListener('click', this.deleteFieldFunc);
+    }
+
+    const chooseTextBtn = curField.node.querySelector('.choose-text-href');
+    const chooseImgBtn = curField.node.querySelector('choose-img-btn');
+
+    if (chooseTextBtn) {
+      chooseTextBtn.addEventListener('click', this.chooseFieldFunc);
+    }
+    if (chooseImgBtn) {
+      chooseImgBtn.addEventListener('click', this.chooseFieldFunc);
+    }
+    console.log(this.fields);
   }
 
   delete() {
     const up_buttons = this.fieldContainer.querySelectorAll('.up-href');
     const down_buttons = this.fieldContainer.querySelectorAll('.down-href');
     const delete_buttons = this.fieldContainer.querySelectorAll('.delete-href');
+    const chooseTextBtns = curField.node.querySelectorAll('.choose-text-href');
+    const chooseImgBtns = curField.node.querySelectorAll('choose-img-btn');
+
     up_buttons.forEach((button) => {
       button.removeEventListener('click', this.swapWithPrevFunc);
     });
@@ -168,6 +198,12 @@ export default class Fields {
     });
     delete_buttons.forEach((button) => {
       button.removeEventListener('click', this.deleteFieldFunc);
+    });
+    chooseImgBtns.forEach((button) => {
+      button.removeEventListener('click', this.chooseFieldFunc);
+    });
+    chooseTextBtns.forEach((button) => {
+      button.removeEventListener('click', this.chooseFieldFunc);
     });
     this.fieldContainer.removeEventListener('keydown', this.insertByEnterFunc);
   }

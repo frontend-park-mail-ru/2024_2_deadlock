@@ -2,6 +2,9 @@ import Ajax from '../../ajax/ajax.js';
 import UserState from '../../user/user.js';
 import UserApi from '../../api/api_user.js';
 import Navigator from '../../router/navigator.js';
+import Handlebars from 'handlebars';
+import HeaderTemplate from '../Header/header.hbs';
+import styles from './header.css';
 
 export default class Header {
   constructor(parent) {
@@ -9,9 +12,8 @@ export default class Header {
   }
 
   render() {
-    const template = Handlebars.templates['header.hbs'];
-    this.parent.innerHTML = template({ user: UserState });
-
+    // const template = Handlebars.templates['header.hbs'];
+    this.parent.innerHTML = HeaderTemplate({ user: UserState });
     if (UserState.isAuthorized) {
       const logoutButton = document.querySelector('#logout-button');
       logoutButton.addEventListener('click', (event) => {
