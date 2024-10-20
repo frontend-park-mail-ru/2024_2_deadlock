@@ -187,6 +187,9 @@ export default class Fields {
     const up_buttons = this.fieldContainer.querySelectorAll('.up-href');
     const down_buttons = this.fieldContainer.querySelectorAll('.down-href');
     const delete_buttons = this.fieldContainer.querySelectorAll('.delete-href');
+    const chooseTextBtns = curField.node.querySelectorAll('.choose-text-href');
+    const chooseImgBtns = curField.node.querySelectorAll('choose-img-btn');
+
     up_buttons.forEach((button) => {
       button.removeEventListener('click', this.swapWithPrevFunc);
     });
@@ -195,6 +198,12 @@ export default class Fields {
     });
     delete_buttons.forEach((button) => {
       button.removeEventListener('click', this.deleteFieldFunc);
+    });
+    chooseImgBtns.forEach((button) => {
+      button.removeEventListener('click', this.chooseFieldFunc);
+    });
+    chooseTextBtns.forEach((button) => {
+      button.removeEventListener('click', this.chooseFieldFunc);
     });
     this.fieldContainer.removeEventListener('keydown', this.insertByEnterFunc);
   }
