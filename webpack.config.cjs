@@ -6,7 +6,20 @@ function getCssRules() {
     // RAW СSS
     {
       test: /\.css$/i,
+      test: /\.css$/i,
       exclude: /\.module\.сss$/i,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: false,
+            sourceMap: true,
+          },
+        },
+        'postcss-loader',
+        'sass-loader',
+      ],
       use: [
         'style-loader',
         {
@@ -21,6 +34,22 @@ function getCssRules() {
       ],
     },
     // СSS MODULES
+    {
+      test: /\.module\.сss$/i,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true,
+          },
+        },
+        ,
+        'postcss-loader',
+        'sass-loader',
+      ],
+    },
     {
       test: /\.module\.сss$/i,
       use: [

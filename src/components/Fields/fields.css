@@ -1,4 +1,4 @@
-@import '/public/variables.css';
+@import '/src/variables.css';
 
 .fields {
   background-color: var(--main-color);
@@ -17,6 +17,11 @@
   outline: none;
   box-sizing: border-box;
   padding-left: 0;
+}
+
+.div-input[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--secondary-text-color);
 }
 
 .div-input li {

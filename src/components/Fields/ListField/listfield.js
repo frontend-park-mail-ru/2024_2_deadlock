@@ -1,4 +1,6 @@
-import { textStyles } from '../fieldconstants.js';
+import { textStyles } from '../fieldconstants.ts';
+import Handlebars from 'handlebars';
+import ListFieldTemplate from './listfield.hbs';
 
 export default class ListField {
   constructor(parent, id, prevID, nextID) {
@@ -11,7 +13,7 @@ export default class ListField {
   }
 
   render() {
-    const template = Handlebars.templates['listfield.hbs'];
+    const template = ListFieldTemplate;
     const prevElement = this.parent.querySelector(`.field[data-id="${this.prevID}"]`);
 
     if (prevElement) {

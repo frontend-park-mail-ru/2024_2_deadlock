@@ -1,4 +1,3 @@
-
 <div class="field" data-id="{{element.id}}">
     <div class="dropdown">
         <button>+</button>
@@ -6,10 +5,13 @@
             <a class="up-href" data-id="{{element.id}}">Вверх</a>
             <a class="down-href" data-id="{{element.id}}">Вниз</a>
             <a class="delete-href" data-id="{{element.id}}">Удалить</a>
-            <a class="make-header-href">Сделать заголовком{{element.id}}</a>
-            <a class="make-text-href">Сделать текстом</a>
         </div>
     </div>
     <div class="div-input {{element.textStyle}}" data-id="{{element.id}}" 
-    contenteditable="true" data-gramm="false" data-placeholder="Введите текст..."></div>
+    contenteditable="true" data-gramm="false">
+         <form id="upload-form" enctype="multipart/form-data" method="post">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Загрузить</button>
+        </form>
+    </div>
 </div>

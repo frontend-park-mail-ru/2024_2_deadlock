@@ -1,4 +1,6 @@
 import ArticleApi from '../../api/api_articles.js';
+import Handlebars from 'handlebars';
+import CardsTemplate from '../Cards/cards.hbs';
 
 export default class Cards {
   constructor(parent) {
@@ -7,8 +9,8 @@ export default class Cards {
 
   async render() {
     this.parent.innerHTML = '';
-    const template = Handlebars.templates['cards.hbs'];
+    // const template = Handlebars.templates['cards.hbs'];
     this.items = await ArticleApi.getArticles();
-    this.parent.innerHTML = template({ items: this.items });
+    this.parent.innerHTML = CardsTemplate({ items: this.items });
   }
 }
