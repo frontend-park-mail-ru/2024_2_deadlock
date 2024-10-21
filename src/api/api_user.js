@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import UserState from '../user/user.ts';
-=======
-import UserState from '../user/user.js';
->>>>>>> 1d08ef7 (app fix: fixed history api)
 import Ajax from '../ajax/ajax.js';
 import { ApiPaths } from './api_config.js';
 

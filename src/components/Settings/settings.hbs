@@ -10,11 +10,7 @@
           Название, описание
         </div>
       </div>
-<<<<<<< HEAD
       <form action="" method="post" id="name-description-form">
-=======
-      <form action="" method="post">
->>>>>>> 80f386d (DEAD-14 feat: Modify settings styles)
         <div class="settings-body__body">
           <div class="form-frame">
             <label class="" for="name-input">Название</label><br>
@@ -28,7 +24,6 @@
             </div>
           </div>
           <div class="form-frame block-right">
-<<<<<<< HEAD
             <label class="" for="description-input">Описание</label><br>
             {{#if context.isDescriptionCorrect}}
             <textarea id="description-input" class="textarea-correct" placeholder="Пара слов о себе"></textarea>
@@ -39,18 +34,6 @@
           </div>
         </div>
         <a href="" class="link-confirm" name="name-description-save">Сохранить</a>
-=======
-          <label class="" for="description-input">Описание</label><br>
-          {{#if context.isDescriptionCorrect}}
-          <textarea id="description-input" class="textarea-correct" placeholder="Пара слов о себе"></textarea>
-          {{else}}
-          <textarea name="" id="description-input" class="textarea-error" placeholder="Пара слов о себе"></textarea><br>
-          <label class="" for="name-description">Некорректное описание</label>
-          {{/if}}
-          </div>
-        </div>
-        <a href="" class="link-confirm">Сохранить</a>
->>>>>>> 80f386d (DEAD-14 feat: Modify settings styles)
       </form>
     </div>
     <div class="settings-body__feed">
@@ -97,15 +80,9 @@
         <div class="form-frame">
           <label for="">Пароль</label><br>
           <span>
-<<<<<<< HEAD
             {{#each (split user.password)}}
             *
             {{/each}}
-=======
-            {{#with user.password.length}}
-            *
-            {{/with}}
->>>>>>> 80f386d (DEAD-14 feat: Modify settings styles)
           </span><br>
           <a href="" class="link-confirm">Изменить</a>
         </div>

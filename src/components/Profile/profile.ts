@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import userState from '../../user/user.';
+import userState from '../../user/user';
 
 class Profile {
   parent: Element;

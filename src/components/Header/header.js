@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-// import Ajax from '../../ajax/ajax.js';
 import UserApi from '../../api/api_user.js';
 import Navigator from '../../router/navigator.js';
 import UserState from '../../user/user.ts';
 
 import template from './header.hbs';
-=======
-import Ajax from '../../ajax/ajax.js';
-import UserState from '../../user/user.js';
-import UserApi from '../../api/api_user.js';
-import Navigator from '../../router/navigator.js';
->>>>>>> 1d08ef7 (app fix: fixed history api)
 
 export default class Header {
   constructor(parent) {
@@ -18,10 +10,6 @@ export default class Header {
   }
 
   render() {
-<<<<<<< HEAD
-=======
-    const template = Handlebars.templates['header.hbs'];
->>>>>>> 1d08ef7 (app fix: fixed history api)
     this.parent.innerHTML = template({ user: UserState });
 
     if (UserState.isAuthorized) {
