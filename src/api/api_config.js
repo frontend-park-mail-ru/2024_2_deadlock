@@ -6,4 +6,5 @@ export const ApiPaths = {
     logout: '/logout',
   },
   feed: '/feed',
+  settings: '/settings',
 };

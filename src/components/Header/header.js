@@ -1,8 +1,10 @@
+// import Ajax from '../../ajax/ajax.js';
+import UserState from '../../user/user.ts';
 import UserApi from '../../api/api_user.js';
 import Navigator from '../../router/navigator.js';
-import UserState from '../../user/user.ts';
-
-import template from './header.hbs';
+// import Handlebars from 'handlebars';
+import HeaderTemplate from '../Header/header.hbs';
+// import styles from './header.css';
 
 export default class Header {
   constructor(parent) {
@@ -10,27 +12,23 @@ export default class Header {
   }
 
   render() {
-    this.parent.innerHTML = template({ user: UserState });
-
-    if (UserState.isAuthorized) {
-      const logoutButton = document.querySelector('#logout-button');
-      logoutButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        this.Logout();
-      });
-    } else {
-      const enterButton = document.querySelector('#enter-button');
-      enterButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        Navigator.navigateTo('/auth');
-      });
+    // const template = Handlebars.templates['header.hbs'];
+    if (this.parent) {
+      this.parent.innerHTML = HeaderTemplate({ user: UserState });
+      if (UserState.isAuthorized) {
+        const logoutButton = document.querySelector('#logout-button');
+        logoutButton.addEventListener('click', (event) => {
+          event.preventDefault();
+          this.Logout();
+        });
+      } else {
+        const enterButton = document.querySelector('#enter-button');
+        enterButton.addEventListener('click', (event) => {
+          event.preventDefault();
+          Navigator.navigateTo('/auth');
+        });
+      }
     }
-
-    const profileButton = document.querySelector('#profile-button');
-    profileButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      Navigator.navigateTo('/profile');
-    });
   }
 
   async Logout() {

@@ -28,3 +28,16 @@ body {
   width: 100%;
   max-width: var(--main-content-feed-max-width);
 }
+
+.container {
+  margin: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-left: var(--main-content-feed-margin-left);
+  margin-right: var(--main-content-feed-margin-right);
+  padding: var(--space-xs);
+  width: 100%;
+  max-width: var(--main-content-feed-max-width);
+  background-color: var(--main-color);
+}

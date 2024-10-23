@@ -1,6 +1,74 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+function getCssRules() {
+  return [
+    // RAW СSS
+    {
+      test: /\.css$/i,
+      test: /\.css$/i,
+      exclude: /\.module\.сss$/i,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: false,
+            sourceMap: true,
+          },
+        },
+        'postcss-loader',
+        'sass-loader',
+      ],
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: false,
+            sourceMap: true,
+          },
+        },
+        'postcss-loader',
+        'sass-loader',
+      ],
+    },
+    // СSS MODULES
+    {
+      test: /\.module\.сss$/i,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true,
+          },
+        },
+        ,
+        'postcss-loader',
+        'sass-loader',
+      ],
+    },
+    {
+      test: /\.module\.сss$/i,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true,
+          },
+        },
+        ,
+        'postcss-loader',
+        'sass-loader',
+      ],
+    },
+  ];
+}
+
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.ts'),
   mode: 'development',
@@ -17,10 +85,15 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
-      {
-        test: /\.(sa|sc|c)ss$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-      },
+      // {
+      //   test: /\.css$/i,
+      //   use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      // },
+      ...getCssRules(),
+      // {
+      //   test: /\.сss$/i,
+      //   use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      // },
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
@@ -45,6 +118,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'index.html'),
       title: 'DEAD-VC.RU',
     }),
   ],

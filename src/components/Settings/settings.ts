@@ -31,39 +31,41 @@ class Settings {
   }
 
   render() {
-    this.parent.innerHTML = templates({ user: userState, context: this.context });
-    const inputCounter = document.querySelector('.input-counter');
-    const inputField = document.querySelector('#name-input') as HTMLInputElement;
-    inputField.value = userState.name.length.toString();
-    const inputLength: number = inputField.value.length;
-    console.log(inputField);
-    console.log(inputLength);
-    const countHandler = () => {
-      if (inputCounter && inputLength) {
-        const difference: number = MAX_NAME_LENGTH - inputLength;
-        inputCounter.textContent = difference.toString();
-      }
-    };
+    if (this.parent) {
+      this.parent.innerHTML = templates({ user: userState, context: this.context }) as string;
+      const inputCounter = document.querySelector('.input-counter');
+      const inputField = document.querySelector('#name-input') as HTMLInputElement;
+      inputField.value = userState.name.length.toString();
+      const inputLength: number = inputField.value.length;
+      console.log(inputField);
+      console.log(inputLength);
+      const countHandler = () => {
+        if (inputCounter && inputLength) {
+          const difference: number = MAX_NAME_LENGTH - inputLength;
+          inputCounter.textContent = difference.toString();
+        }
+      };
 
-    inputField?.addEventListener('click', () => {
-      countHandler();
-    });
+      inputField?.addEventListener('click', () => {
+        countHandler();
+      });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      countHandler();
-    });
+      document.addEventListener('DOMContentLoaded', () => {
+        countHandler();
+      });
 
-    Handlebars.registerHelper('split', (str: string) => {
-      return str.split('');
-    });
+      Handlebars.registerHelper('split', (str: string) => {
+        return str.split('');
+      });
 
-    const linkConfirm = document.querySelector('.link-confirm[name=name-description-save]');
-    const form = document.querySelector('#name-description-form') as HTMLFormElement;
-    console.log(linkConfirm);
-    linkConfirm?.addEventListener('click', (event) => {
-      event.preventDefault();
-      form.submit();
-    });
+      const linkConfirm = document.querySelector('.link-confirm[name=name-description-save]');
+      const form = document.querySelector('#name-description-form') as HTMLFormElement;
+      console.log(linkConfirm);
+      linkConfirm?.addEventListener('click', (event) => {
+        event.preventDefault();
+        form.submit();
+      });
+    }
   }
 }
 
