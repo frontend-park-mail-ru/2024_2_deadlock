@@ -4,7 +4,7 @@ import UserApi from '../../api/api_user.js';
 import Navigator from '../../router/navigator.js';
 // import Handlebars from 'handlebars';
 import HeaderTemplate from '../Header/header.hbs';
-// import styles from './header.css';
+import styles from './header.css';
 
 export default class Header {
   constructor(parent) {

@@ -1,5 +1,6 @@
 import Handlebars from 'handlebars';
 import userState from '../../user/user';
+import styles from './profile.css';
 
 class Profile {
   parent: Element;
