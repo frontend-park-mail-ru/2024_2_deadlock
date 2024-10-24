@@ -11,7 +11,7 @@ class ProfileApi {
 
   async getProfile(){
     const response = await Ajax({
-      url: `${this.url}${ApiPaths.profile}${name}`,
+      url: `${this.url}${ApiPaths.profile}`,
       method: 'GET',
     });
 
@@ -33,8 +33,7 @@ class ProfileApi {
     }
     return answer;
   }
-
-
-
-  
 }
+
+
+export default new ProfileApi(`${ApiPaths.baseUrl}`);
