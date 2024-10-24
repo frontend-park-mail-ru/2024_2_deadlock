@@ -51,6 +51,8 @@ class UserApi {
       },
     });
 
+    alert();
+
     let isApiError = false;
     let apiErrorText = '';
 

@@ -13,8 +13,7 @@ export default tseslint.config(
       prettier,
     },
     rules: {
-      'prettier/prettier': 'error',
-      "no-unused-vars": "off",
+      'prettier/prettier': 'error'
     },
   },
   {

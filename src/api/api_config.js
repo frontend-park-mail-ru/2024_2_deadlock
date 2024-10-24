@@ -6,5 +6,6 @@ export const ApiPaths = {
     logout: '/logout',
   },
   feed: '/feed',
-  // settings: '/settings',
+  settings: '/settings',
+  profile: '/profile',
 };
