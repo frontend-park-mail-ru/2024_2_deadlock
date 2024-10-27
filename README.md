@@ -1,5 +1,13 @@
 # 2024_2_deadlock
+
 Репозиторий Фронтенда проекта vc.ru команды deadlock
+
+## Запуск проекта
+
+```shell
+npm install
+npm start
+```
 
 ## Авторы
 
