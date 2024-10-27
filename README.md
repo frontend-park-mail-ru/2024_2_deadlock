@@ -7,6 +7,7 @@
 ```shell
 npm install
 npm start
+```
 
 ## Авторы
 
