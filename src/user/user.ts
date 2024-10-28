@@ -1,93 +1,71 @@
+import Handlebars from 'handlebars';
+import templates from '../components/Profile/profile.hbs';
+import styles from '../components/Profile/profile.css';
+import UserApi from "../api/api_user";
+
 class UserState {
-  isAuthorized: boolean;
-  email: string;
-  name: string;
-  password: string;
-  avatar: string;
-  registrationDate: string;
-  subcribers: number;
-  subscriptions: number;
-  header: string;
-  constructor() {
-    this.isAuthorized = false;
-    this.email = '';
-    this.name = '';
-    this.password = '';
-    this.avatar = '';
-    this.registrationDate = '';
-    this.subcribers = 0;
-    this.subscriptions = 0;
-    this.header = '';
+  parent: Element;
+  userState: {
+    id: number,
+    isAuthorized: boolean,
+    email: string,
+    password: string,
+  }
+  context: {
+    isPosts: boolean;
+  };
+
+  constructor(
+    id: number,
+    e: string,
+    p: string,
+    parent: Element
+  ) {
+    this.userState = {
+      id: id,
+      isAuthorized: false,
+      email: e,
+      password: p,
+    },
+    this.context = {
+      isPosts: true,
+    },
+    this.parent = parent;
   }
 
-  login() {
-    this.isAuthorized = true;
+  login(email: string) {
+    this.userState.isAuthorized = true;
+    this.userState.email = email;
+    localStorage.setItem('isAuthorized', JSON.stringify(this.userState.isAuthorized));
+    localStorage.setItem('email', this.userState.email);
   }
 
   logout() {
-    this.isAuthorized = false;
+    this.userState.isAuthorized = false;
+    localStorage.removeItem('isAuthorized');
+    localStorage.removeItem('email');
   }
 
-  setEmail(email: string) {
-    this.email = email;
+  update() {
+    this.userState.isAuthorized = JSON.parse(localStorage.getItem('isAuthorized'));
+    if (this.userState.isAuthorized) {
+      this.userState.email = localStorage.getItem('email');
+    }
   }
 
-  removeEmail() {
-    this.email = '';
+  async render() {
+    const response = await UserApi.getUser(this.userState.id);
+    // alert(response);
+    const respStr = JSON.stringify(response);
+    this.parent.innerHTML = templates({
+      context: this.context,
+      user: this.userState
+    });
   }
 
-  setName(name: string) {
-    this.name = name;
-  }
-
-  removeName() {
-    this.name = '';
-  }
-
-  setPassword(password: string) {
-    this.password = password;
-  }
-
-  removePassword() {
-    this.password = '';
-  }
-
-  setAvatar(path: string) {
-    this.avatar = path;
-  }
-
-  setHeader(path: string) {
-    this.header = path;
-  }
-
-  removeAvatar() {
-    this.avatar = '';
-  }
-
-  setRegistrationDate(date: string) {
-    this.registrationDate = date;
-  }
-
-  removeDate() {
-    this.registrationDate = '';
-  }
-
-  setSubscribers(subcribers: number) {
-    this.subcribers = subcribers;
-  }
-
-  setSubscriptions(subscriptions: number) {
-    this.subscriptions = subscriptions;
-  }
+  // setHeader(url: string) {
+  //   this.userState.header = url;
+  // }
 }
 
-const userState = new UserState();
-userState.setName('MyUser');
-userState.setEmail('username@email.com');
-userState.setPassword('MyPassword');
-userState.setRegistrationDate('10.10.2024');
-userState.setAvatar('../images/leonardo.osnova.png');
-userState.setHeader('../images/____.webp');
-userState.setSubscribers(13);
-userState.setSubscriptions(20);
-export default userState;
+export default UserState;

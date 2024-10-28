@@ -4,8 +4,8 @@ export const ApiPaths = {
     login: '/login',
     register: '/register',
     logout: '/logout',
+    list: '/users'
   },
   feed: '/feed',
-  settings: '/settings',
-  profile: '/profile',
+  settings: '/settings'
 };

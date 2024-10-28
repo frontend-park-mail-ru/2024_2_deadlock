@@ -1,35 +1,48 @@
 import Handlebars from 'handlebars';
-import userState from '../../user/user';
 import templates from './profile.hbs';
 import styles from './profile.css';
-import ProfileApi from '../../api/api_profile';
+import UserApi from '../../api/api_user';
 
 class Profile {
   parent: Element;
-  header: {};
   context: {
     isPosts: boolean;
   };
-  constructor(parent: Element) {
+  firstname: string;
+  avatar: string;
+  header: string;
+  registrationDate: string;
+  subcribers: number;
+  subscriptions: number;
+
+  constructor(parent: Element, user: {
+    "registration-date": string,
+    "extra-info": string,
+    "num-subscribers": number,
+    "num-subscriptions": number,
+    "avatar-url": string,
+    "first-name": string,
+    "last-name": string
+  }) {
     this.parent = parent;
     this.context = {
       isPosts: true,
     };
+    this.registrationDate = user["registration-date"];
+    this.subcribers = user["num-subscribers"];
+    this.subscriptions = user["num-subscriptions"];
+    this.avatar = user["avatar-url"];
+    this.firstname = user["first-name"];
     this.header = '';
   }
 
-  async render() {
-    this.header = await ProfileApi.getProfile();
-    this.parent.innerHTML = templates({ 
-      user: userState, 
-      context: this.context, 
-      header: this.header 
+  async render(id: number) {
+    const response = await UserApi.getUser(id);
+    const respStr = JSON.stringify(response);
+    this.parent.innerHTML = templates({
+      context: this.context,
+      profile: this
     });
-    // var disabledHref = document.querySelector('.disabled-href');
-  }
-
-  setHeader(url: string) {
-    this.header = url;
   }
 }
 

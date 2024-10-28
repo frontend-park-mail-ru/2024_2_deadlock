@@ -51,8 +51,6 @@ class UserApi {
       },
     });
 
-    alert();
-
     let isApiError = false;
     let apiErrorText = '';
 
@@ -100,6 +98,35 @@ class UserApi {
       responseStatus: response.status,
       responseError: response.error,
     };
+  }
+
+  async getUser(id) {
+    const response = await Ajax({
+      url: `${this.url}${ApiPaths.user.list}/${id}`,
+      method: 'GET',
+    });
+
+    let isApiError = false;
+    let apiErrorText = '';
+
+    switch (response.status) {
+      case 200:
+        return response.body.data;
+      case 404:
+        isApiError = true;
+        apiErrorText = 'Пользователь с таким именем не существует';
+        break;
+      default:
+        isApiError = true;
+        apiErrorText = 'Ошибка на стороне сервера';
+    }
+    return {
+      isApiError,
+      apiErrorText,
+      responseStatus: response.status,
+      responseError: response.error,
+    };
+    
   }
 }
 

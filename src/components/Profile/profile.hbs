@@ -6,7 +6,7 @@
     <div class="profile-body-header">
       <div class="profile-avatar-header">
         <div class="profile-avatar">
-          <img src="{{user.avatar}}" alt="Oops!">
+          <img src="{{profile.avatar}}" alt="Oops!">
         </div>
       </div>
       <div class="profile-settings__button">
@@ -14,17 +14,17 @@
       </div>
     </div>
     <div class="profile-name">
-      {{user.name}}
+      {{profile.firstname}}
     </div>
     <div class="profile__registration-date">
-      с {{user.registrationDate}}
+      с {{profile.registrationDate}}
     </div>
     <div class="followers">
       <div class="followers__item">
-        {{user.subcribers}} подписчиков
+        {{profile.subcribers}} подписчиков
       </div>
       <div class="followers__item">
-        {{user.subscriptions}} подписок
+        {{profile.subscriptions}} подписок
       </div>
     </div>
     <div class="profile-links">

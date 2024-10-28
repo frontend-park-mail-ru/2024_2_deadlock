@@ -3,6 +3,8 @@ import Forms from '../components/Forms/forms.js';
 import Header from '../components/Header/header.js';
 import Profile from '../components/Profile/profile.ts';
 import Settings from '../components/Settings/settings.ts';
+import UserApi from '../api/api_user.js';
+import UserState from '../user/user.ts';
 
 const itemsContainer = document.querySelector('.items-container');
 const placeForHeader = document.querySelector('.place-for-header');
@@ -28,8 +30,10 @@ function renderFeed() {
   header.render();
 }
 
-function renderProfile() {
-  const profile = new Profile(itemsContainer);
+async function renderProfile(id = 1) {
+  const user = await UserApi.getUser(1);
+  const profile = new Profile(itemsContainer, user);
+  console.log(profile);
   profile.context.isPosts = true;
   profile.render();
   const header = new Header(placeForHeader);
@@ -57,7 +61,7 @@ export const routes = [
     render: renderAuth,
   },
   {
-    path: '/profile',
+    path: `/profile`,
     render: renderProfile,
   },
   {
