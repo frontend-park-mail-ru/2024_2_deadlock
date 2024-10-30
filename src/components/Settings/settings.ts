@@ -51,6 +51,7 @@ class Settings {
       const response = await SettingsApi.getSettings();
       const respStr = JSON.stringify(response);
       const currentUser = await UserApi.getCurrentUser();
+      alert(currentUser["first-name"]);
       this.parent.innerHTML = templates({
         context: this.context,
         username: this.username,

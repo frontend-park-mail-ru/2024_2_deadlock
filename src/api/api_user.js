@@ -56,7 +56,7 @@ class UserApi {
 
     switch (response.status) {
       case 200:
-        UserState.login(email);
+        UserState.login();
         break;
       case 404:
         isApiError = true;
@@ -129,33 +129,31 @@ class UserApi {
     
   }
 
-  // async getEmail() {
-  //   const idResponse = await Ajax({
-  //     url: `${this.url}/me`,
-  //     method: 'GET',
-  //   })
-  //   if (!idResponse.status || idResponse.status !== 200) {
-  //     throw new Error('Не удалось получить ID текущего пользователя');
-  //   }
-  //   return idResponse.body.data["email"];    
-  // }
-
   async getCurrentUser() {
-    const idResponse = await Ajax({
+    const response = await Ajax({
       url: `${this.url}/me`,
       method: 'GET',
     })
     // if (!idResponse.status || idResponse.status !== 200) {
     //   throw new Error('Не удалось получить ID текущего пользователя');
     // }
-    return idResponse.body.data;
-    // const userId = idResponse.body.data["id"];
-    // alert(userId);
-    // const userResponse = await Ajax({
-    //   url: `${this.url}/users/${userId}`,
-    //   method: 'GET',
-    // });
-    
+    switch (response.status) {
+      case 200:
+        return response.body.data;
+      case 404:
+        isApiError = true;
+        apiErrorText = 'Пользователь с таким именем не существует';
+        break;
+      default:
+        isApiError = true;
+        apiErrorText = 'Ошибка на стороне сервера';
+    }
+    return {
+      isApiError,
+      apiErrorText,
+      responseStatus: response.status,
+      responseError: response.error,
+    };
   }
 }
 

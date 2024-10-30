@@ -21,6 +21,13 @@ export default class Header {
           event.preventDefault();
           this.Logout();
         });
+
+        const profileButton = document.querySelector('#profile-button');
+        profileButton.addEventListener('click', async (event) => {
+          event.preventDefault();
+          const currentId = await UserApi.getCurrentUser()["id"];
+          Navigator.navigateTo(`/users/${currentId}`);
+        });
       } else {
         const enterButton = document.querySelector('#enter-button');
         enterButton.addEventListener('click', (event) => {
