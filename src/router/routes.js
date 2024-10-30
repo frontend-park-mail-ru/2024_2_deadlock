@@ -5,6 +5,7 @@ import Profile from '../components/Profile/profile.ts';
 import Settings from '../components/Settings/settings.ts';
 import UserApi from '../api/api_user.js';
 import UserState from '../user/user.ts';
+import SettingsApi from '../api/api_settings.ts'
 
 const itemsContainer = document.querySelector('.items-container');
 const placeForHeader = document.querySelector('.place-for-header');
@@ -33,15 +34,16 @@ function renderFeed() {
 async function renderProfile(id = 1) {
   const user = await UserApi.getUser(1);
   const profile = new Profile(itemsContainer, user);
-  console.log(profile);
-  profile.context.isPosts = true;
   profile.render();
   const header = new Header(placeForHeader);
   header.render();
 }
 
-function renderSettings() {
-  const settings = new Settings(itemsContainer);
+async function renderSettings() {
+  const currentUser = await UserApi.getCurrentUser();
+  // const settingsResponse = await SettingsApi.getSettings();
+  const settings = new Settings(itemsContainer, currentUser);
+
   settings.render();
   const header = new Header(placeForHeader);
   header.render();

@@ -4,6 +4,8 @@ import Handlebars from 'handlebars';
 import userState from '../../user/user';
 import templates from './settings.hbs';
 import styles from './profile.css';
+import SettingsApi from '../../api/api_settings'
+import UserApi from '../../api/api_user'
 
 const MAIN_POPULAR = 'mainPopular';
 // const MAIN_LATEST: string = 'mainLatest';
@@ -17,30 +19,52 @@ class Settings {
   context: {
     mainDefault: string;
     sort: string;
-    description: string;
-    isNameCorrect: boolean;
-    isDescriptionCorrect: boolean;
+    // isNameCorrect: boolean;
+    // isDescriptionCorrect: boolean;  
   };
-  constructor(parent: Element) {
+  username: string;
+  description: string;
+  email: string;
+
+  // передаём текущего пользователя прямо из запроса /me
+  constructor(parent: Element, currentUser: {
+    "id": number,
+    "email": string,
+    "avatar-url": string,
+    "first-name": string,
+    "last-name": string,
+  }) {
     this.parent = parent;
     this.context = {
-      isNameCorrect: true,
-      isDescriptionCorrect: true,
-      description: '',
+      // isNameCorrect: true,
+      // isDescriptionCorrect: true,
       mainDefault: MAIN_POPULAR,
       sort: SORT_BY_POPULARITY,
     };
+    this.description = '';
+    this.username = currentUser["first-name"];
+    this.email = currentUser["email"];
   }
 
-  render() {
+  async render() {
     if (this.parent) {
-      this.parent.innerHTML = templates({ user: userState, context: this.context }) as string;
+      const response = await SettingsApi.getSettings();
+      const respStr = JSON.stringify(response);
+      const currentUser = await UserApi.getCurrentUser();
+      this.parent.innerHTML = templates({
+        context: this.context,
+        username: this.username,
+        email: this.email,
+      });
+
+
+      // this.parent.innerHTML = templates({ user: userState, context: this.context }) as string;
       const inputCounter = document.querySelector('.input-counter');
       const inputField = document.querySelector('#name-input') as HTMLInputElement;
-      inputField.value = userState.name.length.toString();
+
+      inputField.value = this.username;
       const inputLength: number = inputField.value.length;
-      console.log(inputField);
-      console.log(inputLength);
+      
       const countHandler = () => {
         if (inputCounter && inputLength) {
           const difference: number = MAX_NAME_LENGTH - inputLength;
@@ -56,13 +80,8 @@ class Settings {
         countHandler();
       });
 
-      Handlebars.registerHelper('split', (str: string) => {
-        return str.split('');
-      });
-
       const linkConfirm = document.querySelector('.link-confirm[name=name-description-save]');
       const form = document.querySelector('#name-description-form') as HTMLFormElement;
-      console.log(linkConfirm);
       linkConfirm?.addEventListener('click', (event) => {
         event.preventDefault();
         form.submit();

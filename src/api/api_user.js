@@ -128,6 +128,35 @@ class UserApi {
     };
     
   }
+
+  // async getEmail() {
+  //   const idResponse = await Ajax({
+  //     url: `${this.url}/me`,
+  //     method: 'GET',
+  //   })
+  //   if (!idResponse.status || idResponse.status !== 200) {
+  //     throw new Error('Не удалось получить ID текущего пользователя');
+  //   }
+  //   return idResponse.body.data["email"];    
+  // }
+
+  async getCurrentUser() {
+    const idResponse = await Ajax({
+      url: `${this.url}/me`,
+      method: 'GET',
+    })
+    // if (!idResponse.status || idResponse.status !== 200) {
+    //   throw new Error('Не удалось получить ID текущего пользователя');
+    // }
+    return idResponse.body.data;
+    // const userId = idResponse.body.data["id"];
+    // alert(userId);
+    // const userResponse = await Ajax({
+    //   url: `${this.url}/users/${userId}`,
+    //   method: 'GET',
+    // });
+    
+  }
 }
 
 export default new UserApi(`${ApiPaths.baseUrl}`);
