@@ -1,13 +1,24 @@
 {{#each items}}
   <div class='card'>
-    {{#if media-url}}
-    <div class="card-img">
-        <img src="{{media-url}}">
+    <div class='card-author'>
+      <div class='card-author-avatar'>
+        <img class='card-author-avatar__img' src="http://localhost:9000/fieldimagebucket/26dcf5f3-3ee9-4f5f-9481-c2c86b601407?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minio%2F20241028%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241028T163853Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=ba1ade2b44c5abe965b6f4d77e02b33855ee3661bd58c93de8d51bc0e58d7bb2">
+      </div>
+      <div class='card-author-content'>
+        <div class='card-author-name'>
+          NickName
+        </div>
+        <div class='card-author-regdate'>
+          08.10.2024
+        </div>
+      </div>
     </div>
-    {{/if}}
     <div class='card-content'>
       <p class='card-content__header'>{{title}}</p>
       <p class='card-content__text'>{{body}}</p>
+    </div>
+    <div class="card-img">
+        <img src="{{media-url}}">
     </div>
   </div>
 {{/each}}

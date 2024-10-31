@@ -6,7 +6,6 @@ import Header from './components/Header/header.js';
 import registerHelpers from './handlebars/helpers.js';
 import styles from 'index.css';
 
-
 // const Body = document.getElementsByTagName('body')[0];
 // const PlaceForHeader = document.createElement('div');
 // PlaceForHeader.classList.add('place-for-header');

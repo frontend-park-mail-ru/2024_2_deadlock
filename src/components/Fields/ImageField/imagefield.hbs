@@ -1,17 +1,19 @@
 <div class="field" data-id="{{element.id}}">
     <div class="dropdown">
+        {{#unless readOnly}}
         <button>+</button>
         <div class="dropdown-content">
             <a class="up-href" data-id="{{element.id}}">Вверх</a>
             <a class="down-href" data-id="{{element.id}}">Вниз</a>
             <a class="delete-href" data-id="{{element.id}}">Удалить</a>
         </div>
+        {{/unless}}
     </div>
-    <div class="div-input {{element.textStyle}}" data-id="{{element.id}}" 
-    contenteditable="true" data-gramm="false">
-         <form id="upload-form" enctype="multipart/form-data" method="post">
-            <input type="file" name="image" accept="image/*" required>
-            <button type="submit">Загрузить</button>
-        </form>
+    <div class="div-input {{element.textStyle}}" data-id="{{element.id}}">
+        <div class="field-image">
+            <div class="image-placeholder">Выберите Фото</div>
+            <img src="{{element.value}}" class="image-content">
+        </div>
+        <input class="image-input element-hidden" type="file" name="image" accept="image/*">
     </div>
 </div>

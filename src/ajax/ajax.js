@@ -1,5 +1,4 @@
 const HTTP_METHOD_POST = 'POST';
-const HTTP_METHOD_PUT = 'PUT';
 const HTTP_METHOD_GET = 'GET';
 
 export default async function Ajax({ method, url, body = null }) {
@@ -11,19 +10,11 @@ export default async function Ajax({ method, url, body = null }) {
     },
   };
 
-  if (method === HTTP_METHOD_POST || method === HTTP_METHOD_PUT) {
+  if (method === HTTP_METHOD_POST) {
     requestBody.body = JSON.stringify(body);
   }
 
-  let response;
-  try {
-    response = await fetch(url, requestBody);
-  } catch {
-    return {
-      status: 503,
-      error: 'service is not available now',
-    };
-  }
+  const response = await fetch(url, requestBody);
 
   let respBody;
   try {

@@ -1,6 +1,13 @@
-export enum FieldType {TEXT, IMAGE}
+export enum FieldType {
+  TEXT = 'text',
+  IMAGE = 'image',
+  CHECK = 'check',
+}
+
+export const ImageVars = {
+  DEFAULT_FILENAME: 'image',
+};
 
 export const textStyles = {
   REGULAR: 'regular-text',
-  HEADER: 'header-text',
 };

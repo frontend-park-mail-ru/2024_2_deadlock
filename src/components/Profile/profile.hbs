@@ -1,0 +1,39 @@
+<div class="profile">
+  <div class="profile-header">
+    <img src="{{profile.header}}" alt="Oops!">
+  </div>
+  <div class="profile-body">
+    <div class="profile-body-header">
+      <div class="profile-avatar-header">
+        <div class="profile-avatar">
+          <img src="{{profile.avatar}}" alt="Oops!">
+        </div>
+      </div>
+      <div class="profile-settings__button">
+      
+      </div>
+    </div>
+    <div class="profile-name">
+      {{profile.firstname}}
+    </div>
+    <div class="profile__registration-date">
+      с {{profile.registrationDate}}
+    </div>
+    <div class="followers">
+      <div class="followers__item">
+        {{profile.subcribers}} подписчиков
+      </div>
+      <div class="followers__item">
+        {{profile.subscriptions}} подписок
+      </div>
+    </div>
+    <div class="profile-links">
+        <a href="" class="active-href" data-section="posts">Посты</a>
+        <a href="" class="disabled-href" data-section="comments">Комментарии</a>
+    </div>
+  </div>
+<div class="content">
+  {{#if profile.context.isPosts}}
+
+  {{/if}}
+</div>

@@ -1,0 +1,57 @@
+@import '../../variables.css';
+
+.settings {
+  font-family: var(--text-font);
+  font-size: var(--text-size);
+  border-radius: 12px;
+  background-color: var(--main-color);
+  padding: 8px 12px;
+}
+
+.settings-body__header,
+.settings-header {
+  border-block-end: 1px solid;
+  border-color: var(--accent-color);
+}
+
+.settings-header {
+  font-size: var(--text-size-h2);
+}
+
+.settings-body__header {
+  font-size: var(--text-size-h3);
+}
+
+.settings-body__header__subheader {
+  font-size: var(--text-size);
+}
+
+.settings-body__body {
+  padding: 8px 0px;
+}
+
+input,
+textarea {
+  border-radius: 6px;
+  border: 1px solid var(--secondary-text-color);
+}
+
+.settings-body__body,
+.settings-body__body form {
+  display: flex;
+}
+
+.form-frame {
+  flex: 1;
+}
+
+.block-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.link-confirm {
+  color: var(--accent-color);
+  text-decoration: none;
+}

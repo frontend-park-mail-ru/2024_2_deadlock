@@ -1,6 +1,5 @@
 import Navigator from '../../router/navigator.js';
-import Ajax from '../../ajax/ajax.js';
-import UserApi from '../../api/api_user.js';
+import UserApi from '../../api/api_user.ts';
 import FormsTemplate from '../Forms/forms.hbs';
 import styles from './forms.css';
 import indexStyles from '../../index.css';

@@ -1,6 +1,7 @@
 import prettier from 'eslint-plugin-prettier';
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+// import tseslint from 'typescript-eslint';
+import tseslint from '@typescript-eslint/eslint-plugin';
 
 export default tseslint.config(
   {
@@ -20,6 +21,10 @@ export default tseslint.config(
       'prettier/prettier': 'error',
     },
   },
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.stylistic,
+);
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   ...tseslint.configs.stylistic,

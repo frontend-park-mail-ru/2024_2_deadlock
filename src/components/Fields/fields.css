@@ -11,8 +11,31 @@
   max-width: 100%;
 }
 
+.article-header {
+  padding: 10px;
+  background-color: var(--main-color);
+}
+
+.article-header__input {
+  overflow-wrap: break-word;
+  outline: none;
+  margin-left: 10px;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.article-header-moved{
+  margin-left: 33px;
+}
+
+.article-header__input[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--secondary-text-color);
+}
+
 .div-input {
-  width: 80%;
+  width: 90%;
   overflow-wrap: break-word;
   outline: none;
   box-sizing: border-box;
@@ -61,12 +84,10 @@
   opacity: 1;
 }
 
-.header-text {
-  font-size: 20px;
-  font-weight: 200;
-}
-
 .regular-text {
   font-size: 16px;
   font-weight: 100;
 }
+
+
+
