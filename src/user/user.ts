@@ -5,41 +5,40 @@ import UserApi from "../api/api_user";
 
 class UserState {
   parent: Element;
-  state: {
-    id: number,
-    isAuthorized: boolean,
-  }
+  id: number;
+  isAuthorized: boolean;
+  avatar_url: string;
+  username: string;
+  email: string;
 
   constructor(
     id: number,
     parent: Element
   ) {
-    this.state = {
-      id: id,
-      isAuthorized: false,
-    },
+    this.id = id;
+    this.isAuthorized = false;
     this.parent = parent;
   }
 
-  login() {
-    this.state.isAuthorized = true;
-    // this.userState.email = email;
-    localStorage.setItem('isAuthorized', JSON.stringify(this.state.isAuthorized));
-    // localStorage.setItem('email', this.userState.email);
+  login(email: string) {
+    this.isAuthorized = true;
+    this.email = email;
+    localStorage.setItem('isAuthorized', JSON.stringify(this.isAuthorized));
+    localStorage.setItem('email', this.email);
   }
 
   logout() {
-    this.state.isAuthorized = false;
+    this.isAuthorized = false;
     localStorage.removeItem('isAuthorized');
-    // localStorage.removeItem('email');
+    localStorage.removeItem('email');
   }
 
-  // update() {
-  //   this.userState.isAuthorized = JSON.parse(localStorage.getItem('isAuthorized'));
-  //   if (this.userState.isAuthorized) {
-  //     this.userState.email = localStorage.getItem('email');
-  //   }
-  // }
+  update() {
+    this.isAuthorized = JSON.parse(localStorage.getItem('isAuthorized'));
+    if (this.isAuthorized) {
+      this.email = localStorage.getItem('email');
+    }
+  }
 
 }
 

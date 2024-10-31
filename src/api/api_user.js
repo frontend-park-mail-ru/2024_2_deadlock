@@ -56,7 +56,7 @@ class UserApi {
 
     switch (response.status) {
       case 200:
-        UserState.login();
+        UserState.login(email);
         break;
       case 404:
         isApiError = true;
@@ -130,6 +130,9 @@ class UserApi {
   }
 
   async getCurrentUser() {
+    let isApiError = false;
+    let apiErrorText = '';
+    
     const response = await Ajax({
       url: `${this.url}/me`,
       method: 'GET',

@@ -6,6 +6,7 @@ import templates from './settings.hbs';
 import styles from './profile.css';
 import SettingsApi from '../../api/api_settings'
 import UserApi from '../../api/api_user'
+import Ajax from '../../ajax/ajax';
 
 const MAIN_POPULAR = 'mainPopular';
 // const MAIN_LATEST: string = 'mainLatest';
@@ -22,6 +23,7 @@ class Settings {
     // isNameCorrect: boolean;
     // isDescriptionCorrect: boolean;  
   };
+  id: number;
   username: string;
   description: string;
   email: string;
@@ -34,6 +36,7 @@ class Settings {
     "first-name": string,
     "last-name": string,
   }) {
+    this.id = currentUser["id"];
     this.parent = parent;
     this.context = {
       // isNameCorrect: true,
@@ -48,8 +51,6 @@ class Settings {
 
   async render() {
     if (this.parent) {
-      const response = await SettingsApi.getSettings();
-      const respStr = JSON.stringify(response);
       const currentUser = await UserApi.getCurrentUser();
       alert(currentUser["first-name"]);
       this.parent.innerHTML = templates({
@@ -83,8 +84,9 @@ class Settings {
 
       const linkConfirm = document.querySelector('.link-confirm[name=name-description-save]');
       const form = document.querySelector('#name-description-form') as HTMLFormElement;
-      linkConfirm?.addEventListener('click', (event) => {
+      linkConfirm?.addEventListener('click', async (event) => {
         event.preventDefault();
+        
         form.submit();
       });
     }
