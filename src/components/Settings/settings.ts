@@ -4,8 +4,8 @@ import Handlebars from 'handlebars';
 import userState from '../../user/user';
 import templates from './settings.hbs';
 import styles from './profile.css';
-import SettingsApi from '../../api/api_settings'
-import UserApi from '../../api/api_user'
+// import SettingsApi from '../../api/api_settings.ts';
+import UserApi from '../../api/api_user';
 import Ajax from '../../ajax/ajax';
 
 const MAIN_POPULAR = 'mainPopular';
@@ -21,7 +21,7 @@ class Settings {
     mainDefault: string;
     sort: string;
     // isNameCorrect: boolean;
-    // isDescriptionCorrect: boolean;  
+    // isDescriptionCorrect: boolean;
   };
   id: number;
   username: string;
@@ -29,14 +29,17 @@ class Settings {
   email: string;
 
   // передаём текущего пользователя прямо из запроса /me
-  constructor(parent: Element, currentUser: {
-    "id": number,
-    "email": string,
-    "avatar-url": string,
-    "first-name": string,
-    "last-name": string,
-  }) {
-    this.id = currentUser["id"];
+  constructor(
+    parent: Element,
+    currentUser: {
+      id: number;
+      email: string;
+      'avatar-url': string;
+      'first-name': string;
+      'last-name': string;
+    },
+  ) {
+    this.id = currentUser['id'];
     this.parent = parent;
     this.context = {
       // isNameCorrect: true,
@@ -45,20 +48,19 @@ class Settings {
       sort: SORT_BY_POPULARITY,
     };
     this.description = '';
-    this.username = currentUser["first-name"];
-    this.email = currentUser["email"];
+    this.username = currentUser['first-name'];
+    this.email = currentUser['email'];
   }
 
   async render() {
     if (this.parent) {
       const currentUser = await UserApi.getCurrentUser();
-      alert(currentUser["first-name"]);
+      alert(currentUser['first-name']);
       this.parent.innerHTML = templates({
         context: this.context,
         username: this.username,
         email: this.email,
       });
-
 
       // this.parent.innerHTML = templates({ user: userState, context: this.context }) as string;
       const inputCounter = document.querySelector('.input-counter');
@@ -66,7 +68,7 @@ class Settings {
 
       inputField.value = this.username;
       const inputLength: number = inputField.value.length;
-      
+
       const countHandler = () => {
         if (inputCounter && inputLength) {
           const difference: number = MAX_NAME_LENGTH - inputLength;
@@ -86,7 +88,7 @@ class Settings {
       const form = document.querySelector('#name-description-form') as HTMLFormElement;
       linkConfirm?.addEventListener('click', async (event) => {
         event.preventDefault();
-        
+
         form.submit();
       });
     }

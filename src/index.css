@@ -3,6 +3,8 @@
 @import './variables.css';
 @import './components/Fields/fields.css';
 @import './components/Fields/ImageField/imagefield.css';
+@import './components/Profile/profile.css';
+@import './components/Settings/settings.css';
 
 body {
   margin: 0;

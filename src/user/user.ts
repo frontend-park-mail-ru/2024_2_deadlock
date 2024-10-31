@@ -1,24 +1,17 @@
 import Handlebars from 'handlebars';
 import templates from '../components/Profile/profile.hbs';
 import styles from '../components/Profile/profile.css';
-import UserApi from "../api/api_user";
+import UserApi from '../api/api_user';
 
 class UserState {
-  parent: Element;
   id: number;
   isAuthorized: boolean;
-  avatar_url: string;
-  username: string;
+  avatarUrl: string;
+  firstName: string;
+  lastName: string;
   email: string;
 
-  constructor(
-    id: number,
-    parent: Element
-  ) {
-    this.id = id;
-    this.isAuthorized = false;
-    this.parent = parent;
-  }
+  constructor() {}
 
   login(email: string) {
     this.isAuthorized = true;
@@ -39,7 +32,6 @@ class UserState {
       this.email = localStorage.getItem('email');
     }
   }
-
 }
 
 export default UserState;

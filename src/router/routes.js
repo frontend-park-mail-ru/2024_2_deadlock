@@ -3,6 +3,9 @@ import Article from '../components/Fields/article.js';
 import Forms from '../components/Forms/forms.js';
 import Header from '../components/Header/header.js';
 import ViewArticle from '../components/Fields/viewarticle.ts';
+import UserApi from '../api/api_user.ts';
+import Settings from '../components/Settings/settings.ts';
+import Profile from '../components/Profile/profile.ts';
 
 const itemsContainer = document.querySelector('.items-container');
 const placeForHeader = document.querySelector('.place-for-header');
