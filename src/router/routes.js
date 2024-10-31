@@ -40,6 +40,24 @@ function renderViewArticle() {
   header.render();
 }
 
+async function renderProfile(id = 1) {
+  const user = await UserApi.getUser(1);
+  const profile = new Profile(itemsContainer, user);
+  profile.render();
+  const header = new Header(placeForHeader);
+  header.render();
+}
+
+async function renderSettings() {
+  const currentUser = await UserApi.getCurrentUser();
+  // const settingsResponse = await SettingsApi.getSettings();
+  const settings = new Settings(itemsContainer, currentUser);
+
+  settings.render();
+  const header = new Header(placeForHeader);
+  header.render();
+}
+
 export const routes = [
   {
     path: '/feed',
@@ -60,5 +78,13 @@ export const routes = [
   {
     path: '/viewarticle',
     render: renderViewArticle,
+  },
+  {
+    path: `/profile`,
+    render: renderProfile,
+  },
+  {
+    path: '/settings',
+    render: renderSettings,
   },
 ];

@@ -4,6 +4,7 @@ export const ApiPaths = {
     login: '/login',
     register: '/register',
     logout: '/logout',
+    list: '/users',
   },
   article: {
     url: '/article',
@@ -13,6 +14,7 @@ export const ApiPaths = {
   feed: '/feed',
   image: '/image',
   swap: '/swap',
+  settings: '/settings',
 };
 
 // export const ApiPaths = {

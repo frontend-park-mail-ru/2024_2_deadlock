@@ -99,6 +99,63 @@ class UserApi {
       responseError: response.error,
     };
   }
+  async getUser(id) {
+    const response = await Ajax({
+      url: `${this.url}${ApiPaths.user.list}/${id}`,
+      method: 'GET',
+    });
+
+    let isApiError = false;
+    let apiErrorText = '';
+
+    switch (response.status) {
+      case 200:
+        return response.body.data;
+      case 404:
+        isApiError = true;
+        apiErrorText = 'Пользователь с таким именем не существует';
+        break;
+      default:
+        isApiError = true;
+        apiErrorText = 'Ошибка на стороне сервера';
+    }
+    return {
+      isApiError,
+      apiErrorText,
+      responseStatus: response.status,
+      responseError: response.error,
+    };
+  }
+
+  async getCurrentUser() {
+    let isApiError = false;
+    let apiErrorText = '';
+
+    const response = await Ajax({
+      url: `${this.url}/me`,
+      method: 'GET',
+    });
+    // if (!idResponse.status || idResponse.status !== 200) {
+    //   throw new Error('Не удалось получить ID текущего пользователя');
+    // }
+    switch (response.status) {
+      case 200:
+        return response.body.data;
+      case 404:
+        isApiError = true;
+        apiErrorText = 'Пользователь с таким именем не существует';
+        break;
+      default:
+        isApiError = true;
+        apiErrorText = 'Ошибка на стороне сервера';
+    }
+    return {
+      isApiError,
+      apiErrorText,
+      responseStatus: response.status,
+      responseError: response.error,
+    };
+  }
 }
 
 export default new UserApi(`${ApiPaths.baseUrl}`);
