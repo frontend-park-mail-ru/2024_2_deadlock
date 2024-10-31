@@ -1,5 +1,6 @@
 
 <div class="field" data-id="{{element.id}}">
+    {{#unless readOnly}}
     <div class="dropdown">
         <button>+</button>
         <div class="dropdown-content">
@@ -7,5 +8,9 @@
             <a class="choose-img-href" data-new-field-type="image" data-id="{{element.id}}">Картинка</a>
         </div>
     </div>
-    <div class="div-input {{element.textStyle}}" data-id="{{element.id}}"  contenteditable="true" data-gramm="false"  data-placeholder="Выберите элемент..."></div>
+    {{/unless}}
+    <div class="div-input {{element.textStyle}}" data-id="{{element.id}}"  
+    {{#unless readOnly}}contenteditable="true"{{/unless}}
+     data-gramm="false"  data-placeholder="Выберите элемент..."></div>
+    
 </div>

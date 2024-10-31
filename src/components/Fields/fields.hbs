@@ -1,3 +1,9 @@
 
-<div class="fields">
+<div class="article-header">
+    <div class="article-header__input 
+    {{#unless article.readOnly}}article-header-moved{{/unless}}" data-id="{{article.id}}" 
+    {{#unless article.readOnly}}contenteditable="true"{{/unless}}
+    data-gramm="false" data-placeholder="Введите заголовок...">{{article.title}}</div>
+</div>
+<div class="fields" {{#if article.readOnly}}data-readonly="true"{{else}}data-readonly="false"{{/if}}>
 </div>

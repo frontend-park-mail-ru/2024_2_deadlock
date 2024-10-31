@@ -1,7 +1,8 @@
 import Cards from '../components/Cards/cards.js';
-import Fields from '../components/Fields/fields.js';
+import Article from '../components/Fields/article.js';
 import Forms from '../components/Forms/forms.js';
 import Header from '../components/Header/header.js';
+import ViewArticle from '../components/Fields/viewarticle.ts';
 
 const itemsContainer = document.querySelector('.items-container');
 const placeForHeader = document.querySelector('.place-for-header');
@@ -27,7 +28,14 @@ function renderFeed() {
 
 function renderRedactor() {
   const header = new Header(placeForHeader);
-  const fields = new Fields(itemsContainer);
+  const fields = new Article(itemsContainer);
+  fields.render();
+  header.render();
+}
+
+function renderViewArticle() {
+  const header = new Header(placeForHeader);
+  const fields = new ViewArticle(itemsContainer);
   fields.render();
   header.render();
 }
@@ -48,5 +56,9 @@ export const routes = [
   {
     path: '/redactor',
     render: renderRedactor,
+  },
+  {
+    path: '/viewarticle',
+    render: renderViewArticle,
   },
 ];

@@ -1,59 +1,61 @@
 import { textStyles } from '../fieldconstants.ts';
 import Handlebars from 'handlebars';
 import TextFieldTemplate from './textfield.hbs';
+import FieldApi from '../../../api/api_fields.ts';
+import { FieldType } from '../fieldconstants.ts';
 
 export default class TextField {
-  constructor(parent, id, textStyle, prevID, nextID) {
+  constructor(parent, id, prevID, nextID, value) {
     this.parent = parent;
     this.id = id;
-    this.textStyle = textStyle;
     this.node = undefined;
-    this.makeTextFunc = this.makeText.bind(this);
-    this.makeHeaderFunc = this.makeHeader.bind(this);
+    this.timeOut = undefined;
+    this.value = value;
+    this.fieldtype = FieldType.TEXT;
+    this.prevID = prevID;
+    this.nextID = nextID;
+    this.updateStateFunc = this.updateStateFunc.bind(this);
   }
 
   render() {
     const template = TextFieldTemplate;
-    const prevElement = this.parent.querySelector(`.field[data-id="${this.prevID}"]`);
+    const prevElement = this.prevID
+      ? this.parent.querySelector(`.field[data-id="${this.prevID}"]`)
+      : undefined;
+    const readOnlyVal = this.parent.dataset.readonly === 'true';
 
     if (prevElement) {
-      prevElement.insertAdjacentHTML('afterend', template({ element: this }));
+      prevElement.insertAdjacentHTML(
+        'afterend',
+        template({ element: this, readOnly: readOnlyVal }),
+      );
     } else {
-      this.parent.insertAdjacentHTML('afterbegin', template({ element: this }));
+      this.parent.insertAdjacentHTML(
+        'afterbegin',
+        template({ element: this, readOnly: readOnlyVal }),
+      );
     }
 
     this.node = this.parent.querySelector(`.field[data-id="${this.id}"]`);
-    const text_button = this.node.querySelector('.make-text-href');
-    const header_button = this.node.querySelector('.make-header-href');
-
-    header_button.addEventListener('click', this.makeHeaderFunc);
-    text_button.addEventListener('click', this.makeTextFunc);
+    const InputField = this.node.querySelector('.div-input');
+    InputField.addEventListener('input', this.updateStateFunc);
   }
 
-  makeHeader(event) {
-    console.log(event.target);
-    this.changeTextStyle(this.id, textStyles.HEADER);
+  updateStateFunc(event) {
+    clearTimeout(this.timeOut);
+    this.readContent();
+    this.timeOut = setTimeout(() => {
+      FieldApi.EditField(this.id, this.fieldtype, this.value);
+    }, 2000);
   }
 
-  makeText(event) {
-    console.log(event.target);
-    this.changeTextStyle(this.id, textStyles.REGULAR);
-  }
-
-  changeTextStyle(id, textStyle) {
-    let cur = this.node.querySelector('.div-input');
-    cur.classList.remove(this.textStyle);
-    this.textStyle = textStyle;
-    cur.classList.add(this.textStyle);
+  readContent() {
+    const div_input = this.node.querySelector('.div-input');
+    this.value = div_input.innerText;
   }
 
   delete() {
-    const text_button = this.node.querySelector('.make-text-href');
-    const header_button = this.node.querySelector('.make-header-href');
-
-    text_button.removeEventListener('click', this.makeTextFunc);
-    header_button.removeEventListener('click', this.makeHeaderFunc);
-
+    this.readContent();
     this.node.remove();
   }
 }

@@ -2,17 +2,30 @@ const HTTP_METHOD_POST = 'POST';
 const HTTP_METHOD_PUT = 'PUT';
 const HTTP_METHOD_GET = 'GET';
 
-export default async function Ajax({ method, url, body = null }) {
-  const requestBody = {
+export default async function Ajax({
+  method,
+  url,
+  body = undefined,
+  contentType = 'application/json',
+}: {
+  method: string;
+  url: string;
+  body?: any;
+  contentType?: string;
+}): Promise<{ status: number; body?: object; error?: object }> {
+  const requestBody: RequestInit = {
     credentials: 'include',
     method,
-    header: {
-      'Content-Type': 'application/json',
-    },
+    headers: {},
+    body,
   };
 
   if (method === HTTP_METHOD_POST || method === HTTP_METHOD_PUT) {
-    requestBody.body = JSON.stringify(body);
+    if (contentType === 'application/json') {
+      requestBody.body = JSON.stringify(body);
+    } else {
+      requestBody.body = body;
+    }
   }
 
   let response;
@@ -21,7 +34,7 @@ export default async function Ajax({ method, url, body = null }) {
   } catch {
     return {
       status: 503,
-      error: 'service is not available now',
+      error: { message: 'service is not available now' },
     };
   }
 
@@ -31,8 +44,7 @@ export default async function Ajax({ method, url, body = null }) {
   } catch {
     return {
       status: response.status,
-      error: 'failed to parse respBody',
-      body: 'failed to parse respBody',
+      error: { message: 'failed to parse respBody' },
     };
   }
 

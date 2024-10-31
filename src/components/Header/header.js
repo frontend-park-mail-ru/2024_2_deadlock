@@ -1,4 +1,3 @@
-import Ajax from '../../ajax/ajax.js';
 import UserState from '../../user/user.js';
 import UserApi from '../../api/api_user.js';
 import Navigator from '../../router/navigator.js';

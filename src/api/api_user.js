@@ -1,5 +1,5 @@
 import UserState from '../user/user.js';
-import Ajax from '../ajax/ajax.js';
+import Ajax from '../ajax/ajax.ts';
 import { ApiPaths } from './api_config.js';
 
 class UserApi {
